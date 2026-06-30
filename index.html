@@ -3,98 +3,363 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Syamsuddin | Personal Website</title>
+  <title>[姓名] | 个人简历</title>
+
   <style>
-    body {
-      max-width: 900px;
-      margin: 70px auto;
-      padding: 0 24px;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      line-height: 1.8;
-      color: #222;
+    :root {
+      --primary: #1f4e79;
+      --primary-light: #eaf2f8;
+      --text: #1f2933;
+      --muted: #667085;
+      --border: #d9e1e8;
+      --background: #f5f7fa;
+      --card: #ffffff;
     }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 8px;
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .page {
+      width: min(1050px, calc(100% - 32px));
+      margin: 36px auto;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(31, 78, 121, 0.12);
+    }
+
+    header {
+      padding: 48px 56px 40px;
+      background: linear-gradient(135deg, #163a5b, #2f6b9a);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      margin: 8px 0 22px;
+      font-size: 18px;
+      opacity: 0.92;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      font-size: 15px;
+    }
+
+    .contact span {
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 38px 56px 52px;
+    }
+
+    section {
+      margin-bottom: 38px;
     }
 
     h2 {
-      margin-top: 42px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: var(--primary);
+      font-size: 23px;
     }
 
-    a {
-      color: #0969da;
-      text-decoration: none;
+    h2::before {
+      content: "";
+      width: 5px;
+      height: 26px;
+      border-radius: 4px;
+      background: var(--primary);
     }
 
-    .tag {
-      display: inline-block;
-      margin: 4px 6px 4px 0;
-      padding: 3px 10px;
-      border-radius: 16px;
-      background: #f1f3f5;
+    .summary {
+      margin: 0;
+      padding: 18px 20px;
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      color: #344054;
+    }
+
+    .entry {
+      position: relative;
+      padding: 0 0 24px 20px;
+      border-left: 1px solid var(--border);
+    }
+
+    .entry:last-child {
+      padding-bottom: 0;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .entry-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .date {
+      color: var(--muted);
       font-size: 14px;
     }
 
-    .project {
-      margin: 18px 0;
-      padding: 16px;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
+    .organization {
+      margin: 3px 0 8px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 5px 12px;
+      border: 1px solid #bfd3e2;
+      border-radius: 999px;
+      background: #f8fbfd;
+      color: #315a78;
+      font-size: 14px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px;
+    }
+
+    footer {
+      padding: 22px 56px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+      }
+
+      header,
+      main,
+      footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .two-columns {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>Syamsuddin</h1>
-  <p>
-    Undergraduate student interested in data, AI, public governance,
-    and intelligent computing systems.
-  </p>
+  <div class="page">
+    <header>
+      <h1>[姓名]</h1>
+      <p class="subtitle">[求职意向 / 研究方向 / 个人定位]</p>
 
-  <p>
-    <a href="https://github.com/syamsuddin179">GitHub</a> ·
-    <a href="mailto:syamsuddin179@madrasah.kemenag.go.id">Email</a>
-  </p>
+      <div class="contact">
+        <span>邮箱：[填写邮箱]</span>
+        <span>电话：[填写电话]</span>
+        <span>所在地：[填写城市]</span>
+        <span>GitHub：[填写链接]</span>
+        <span>个人网站：[填写链接]</span>
+      </div>
+    </header>
 
-  <h2>Research Interests</h2>
-  <span class="tag">Data Science</span>
-  <span class="tag">AI for Public Governance</span>
-  <span class="tag">Smart Elderly Care</span>
-  <span class="tag">LLM Systems</span>
-  <span class="tag">FPGA Acceleration</span>
+    <main>
+      <section>
+        <h2>个人简介</h2>
+        <p class="summary">
+          [用 2—4 句话简要介绍自己的教育背景、研究兴趣、专业能力与职业目标。]
+        </p>
+      </section>
 
-  <h2>Selected Projects</h2>
+      <section>
+        <h2>教育经历</h2>
 
-  <div class="project">
-    <h3>Smart Elderly Care Recommendation System</h3>
-    <p>
-      Developed an emotion-aware elderly-care recommendation framework
-      using speech emotion recognition, depression-risk assessment,
-      and hybrid recommendation methods.
-    </p>
+        <div class="entry">
+          <div class="entry-header">
+            <p class="entry-title">[学校名称] · [学院 / 专业]</p>
+            <span class="date">[开始时间] — [结束时间]</span>
+          </div>
+          <p class="organization">[学历 / 学位]</p>
+          <ul>
+            <li>[GPA / 排名 / 核心课程等信息]</li>
+            <li>[奖学金、荣誉或其他亮点]</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <p class="entry-title">[学校名称] · [学院 / 专业]</p>
+            <span class="date">[开始时间] — [结束时间]</span>
+          </div>
+          <p class="organization">[学历 / 学位]</p>
+          <ul>
+            <li>[相关信息]</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>项目经历</h2>
+
+        <div class="entry">
+          <div class="entry-header">
+            <p class="entry-title">[项目名称]</p>
+            <span class="date">[开始时间] — [结束时间]</span>
+          </div>
+          <p class="organization">[角色 / 团队 / 指导单位]</p>
+          <ul>
+            <li>[项目背景与目标]</li>
+            <li>[你的核心工作、使用的方法或技术]</li>
+            <li>[成果、指标、竞赛奖项或实际影响]</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <p class="entry-title">[项目名称]</p>
+            <span class="date">[开始时间] — [结束时间]</span>
+          </div>
+          <p class="organization">[角色 / 团队 / 指导单位]</p>
+          <ul>
+            <li>[项目背景与目标]</li>
+            <li>[你的核心工作、使用的方法或技术]</li>
+            <li>[成果、指标、竞赛奖项或实际影响]</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>科研 / 实习经历</h2>
+
+        <div class="entry">
+          <div class="entry-header">
+            <p class="entry-title">[机构 / 实验室 / 公司名称]</p>
+            <span class="date">[开始时间] — [结束时间]</span>
+          </div>
+          <p class="organization">[职位 / 身份]</p>
+          <ul>
+            <li>[承担的研究、分析或工程工作]</li>
+            <li>[方法、工具、成果或贡献]</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="two-columns">
+        <div>
+          <h2>专业技能</h2>
+          <div class="skills">
+            <span class="tag">[技能 1]</span>
+            <span class="tag">[技能 2]</span>
+            <span class="tag">[技能 3]</span>
+            <span class="tag">[技能 4]</span>
+            <span class="tag">[技能 5]</span>
+            <span class="tag">[技能 6]</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>语言能力</h2>
+          <div class="skills">
+            <span class="tag">[中文]</span>
+            <span class="tag">[英语]</span>
+            <span class="tag">[其他语言]</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>奖项与荣誉</h2>
+
+        <div class="entry">
+          <div class="entry-header">
+            <p class="entry-title">[奖项 / 荣誉名称]</p>
+            <span class="date">[时间]</span>
+          </div>
+          <p class="organization">[授予单位]</p>
+          <ul>
+            <li>[获奖说明或等级]</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>作品与链接</h2>
+        <ul>
+          <li>GitHub：[填写项目仓库链接]</li>
+          <li>论文 / 报告：[填写链接]</li>
+          <li>在线作品 / 演示：[填写链接]</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      © [年份] [姓名] · Last updated: [更新日期]
+    </footer>
   </div>
-
-  <div class="project">
-    <h3>Depression Risk and Medical Burden</h3>
-    <p>
-      Built a research pipeline using fixed-effects models, XGBoost,
-      SHAP analysis, and policy simulations for chronic-disease patients.
-    </p>
-  </div>
-
-  <div class="project">
-    <h3>LoongArch FPGA Matrix-Multiplication IP</h3>
-    <p>
-      Designed and optimized a 4×4 unsigned matrix-multiplication accelerator
-      for a LoongArch SoC competition platform.
-    </p>
-  </div>
-
-  <h2>Contact</h2>
-  <p>Email: syamsuddin179@madrasah.kemenag.go.id</p>
 </body>
 </html>
