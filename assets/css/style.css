@@ -33,6 +33,21 @@ a {
   text-decoration: none;
 }
 
+.text-link,
+.entry-title a {
+  color: var(--blue-dark);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(37, 99, 235, 0.35);
+  text-underline-offset: 3px;
+}
+
+.text-link:hover,
+.entry-title a:hover {
+  color: var(--blue);
+  text-decoration-color: currentColor;
+}
+
 .site-header {
   position: relative;
   overflow: hidden;
