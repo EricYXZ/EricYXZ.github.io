@@ -107,6 +107,27 @@
   border-color: var(--line);
 }
 
+/* --- Hero 区域深色模式保持不变（Hero 始终为暗色背景） --- */
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .hero-copy,
+[data-theme="dark"] .meta-value {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .meta-label {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme="dark"] .button.primary {
+  color: #0b1628;
+  background: #ffffff;
+}
+
+[data-theme="dark"] .button.secondary {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
 /* --- 显式深色模式文字颜色 --- */
 [data-theme="dark"] .section h2,
 [data-theme="dark"] .section-heading h2,
@@ -267,6 +288,27 @@
   :root:not([data-theme="light"]) .summary,
   :root:not([data-theme="light"]) .empty-note {
     border-color: var(--line);
+  }
+
+  /* --- Hero 区域深色模式保持不变 --- */
+  :root:not([data-theme="light"]) .hero h1,
+  :root:not([data-theme="light"]) .hero-copy,
+  :root:not([data-theme="light"]) .meta-value {
+    color: #ffffff;
+  }
+
+  :root:not([data-theme="light"]) .meta-label {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  :root:not([data-theme="light"]) .button.primary {
+    color: #0b1628;
+    background: #ffffff;
+  }
+
+  :root:not([data-theme="light"]) .button.secondary {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
   }
 
   /* --- 显式深色模式文字颜色（系统自动检测） --- */
