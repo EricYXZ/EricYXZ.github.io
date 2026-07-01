@@ -107,6 +107,78 @@
   border-color: var(--line);
 }
 
+/* --- 显式深色模式文字颜色 --- */
+[data-theme="dark"] .section h2,
+[data-theme="dark"] .section-heading h2,
+[data-theme="dark"] .intro-grid h2,
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .feature h3,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .entry-title,
+[data-theme="dark"] .entry-title a,
+[data-theme="dark"] .contact-value {
+  color: #e8edf5;
+}
+
+[data-theme="dark"] .lead,
+[data-theme="dark"] .feature p,
+[data-theme="dark"] .card p,
+[data-theme="dark"] .entry p,
+[data-theme="dark"] .entry li,
+[data-theme="dark"] .page-intro,
+[data-theme="dark"] .contact-label {
+  color: #c0cdde;
+}
+
+[data-theme="dark"] .section-kicker,
+[data-theme="dark"] .feature-mark,
+[data-theme="dark"] .gallery-caption,
+[data-theme="dark"] .photo-card span,
+[data-theme="dark"] .date,
+[data-theme="dark"] .empty-note,
+[data-theme="dark"] .certificate-missing {
+  color: #7b8ca8;
+}
+
+[data-theme="dark"] .text-link,
+[data-theme="dark"] .entry-title a,
+[data-theme="dark"] .card-link,
+[data-theme="dark"] .organization {
+  color: #7eb8f0;
+}
+
+[data-theme="dark"] .text-link:hover,
+[data-theme="dark"] .entry-title a:hover {
+  color: #a0d0ff;
+}
+
+[data-theme="dark"] .award-toggle {
+  color: #7eb8f0;
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .award-toggle:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  background: #1a2d48;
+}
+
+[data-theme="dark"] .entry {
+  border-left-color: var(--line);
+}
+
+[data-theme="dark"] .contact-item:hover {
+  background: #1a2d48;
+}
+
+[data-theme="dark"] .photo-card figcaption strong {
+  color: #e8edf5;
+}
+
+[data-theme="dark"] .giscus-container {
+  color-scheme: dark;
+}
+
 /* 系统偏好自动检测 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -195,6 +267,74 @@
   :root:not([data-theme="light"]) .summary,
   :root:not([data-theme="light"]) .empty-note {
     border-color: var(--line);
+  }
+
+  /* --- 显式深色模式文字颜色（系统自动检测） --- */
+  :root:not([data-theme="light"]) .section h2,
+  :root:not([data-theme="light"]) .section-heading h2,
+  :root:not([data-theme="light"]) .intro-grid h2,
+  :root:not([data-theme="light"]) .page-title,
+  :root:not([data-theme="light"]) .feature h3,
+  :root:not([data-theme="light"]) .card h3,
+  :root:not([data-theme="light"]) .entry-title,
+  :root:not([data-theme="light"]) .entry-title a,
+  :root:not([data-theme="light"]) .contact-value {
+    color: #e8edf5;
+  }
+
+  :root:not([data-theme="light"]) .lead,
+  :root:not([data-theme="light"]) .feature p,
+  :root:not([data-theme="light"]) .card p,
+  :root:not([data-theme="light"]) .entry p,
+  :root:not([data-theme="light"]) .entry li,
+  :root:not([data-theme="light"]) .page-intro,
+  :root:not([data-theme="light"]) .contact-label {
+    color: #c0cdde;
+  }
+
+  :root:not([data-theme="light"]) .section-kicker,
+  :root:not([data-theme="light"]) .feature-mark,
+  :root:not([data-theme="light"]) .gallery-caption,
+  :root:not([data-theme="light"]) .photo-card span,
+  :root:not([data-theme="light"]) .date,
+  :root:not([data-theme="light"]) .empty-note,
+  :root:not([data-theme="light"]) .certificate-missing {
+    color: #7b8ca8;
+  }
+
+  :root:not([data-theme="light"]) .text-link,
+  :root:not([data-theme="light"]) .entry-title a,
+  :root:not([data-theme="light"]) .card-link,
+  :root:not([data-theme="light"]) .organization {
+    color: #7eb8f0;
+  }
+
+  :root:not([data-theme="light"]) .text-link:hover,
+  :root:not([data-theme="light"]) .entry-title a:hover {
+    color: #a0d0ff;
+  }
+
+  :root:not([data-theme="light"]) .award-toggle {
+    color: #7eb8f0;
+    background: var(--paper);
+    border-color: var(--line);
+  }
+
+  :root:not([data-theme="light"]) .award-toggle:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+    background: #1a2d48;
+  }
+
+  :root:not([data-theme="light"]) .entry {
+    border-left-color: var(--line);
+  }
+
+  :root:not([data-theme="light"]) .contact-item:hover {
+    background: #1a2d48;
+  }
+
+  :root:not([data-theme="light"]) .photo-card figcaption strong {
+    color: #e8edf5;
   }
 }
 
