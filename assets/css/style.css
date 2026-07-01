@@ -499,3 +499,9 @@ ul {
     min-height: 188px;
   }
 }
+
+
+.visitor-stats {
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
