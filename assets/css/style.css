@@ -295,6 +295,10 @@ main {
   gap: 16px;
 }
 
+.home-card-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .card {
   min-height: 220px;
   display: flex;
@@ -435,6 +439,68 @@ ul {
   background: rgba(255, 255, 255, 0.72);
 }
 
+.gallery-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.gallery-caption {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted);
+  text-align: right;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.photo-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 10px 24px rgba(29, 47, 39, 0.06);
+}
+
+.photo-card--wide {
+  grid-column: span 2;
+}
+
+.photo-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  object-fit: cover;
+  background: #dbe6f4;
+}
+
+.photo-card figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px 16px;
+}
+
+.photo-card strong {
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.photo-card span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .site-footer {
   padding: 28px 0;
   border-top: 1px solid var(--line);
@@ -449,9 +515,34 @@ ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .home-card-grid {
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
   .intro-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .gallery-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gallery-caption {
+    max-width: none;
+    text-align: left;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-card--wide {
+    grid-column: auto;
   }
 }
 
@@ -493,6 +584,10 @@ ul {
   .feature-grid,
   .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .home-card-grid {
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
   }
 
   .card {
