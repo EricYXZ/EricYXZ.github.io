@@ -108,6 +108,7 @@
 }
 
 /* --- Hero 区域深色模式保持不变（Hero 始终为暗色背景） --- */
+[data-theme="dark"] .brand,
 [data-theme="dark"] .hero h1,
 [data-theme="dark"] .hero-copy,
 [data-theme="dark"] .meta-value {
@@ -291,6 +292,7 @@
   }
 
   /* --- Hero 区域深色模式保持不变 --- */
+  :root:not([data-theme="light"]) .brand,
   :root:not([data-theme="light"]) .hero h1,
   :root:not([data-theme="light"]) .hero-copy,
   :root:not([data-theme="light"]) .meta-value {
