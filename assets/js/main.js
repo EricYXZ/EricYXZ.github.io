@@ -98,6 +98,50 @@
   });
 })();
 
+// ===== Giscus 留言系统 =====
+(function () {
+  const container = document.getElementById('giscus-container');
+  if (!container) return;
+
+  function getGiscusTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') return 'dark';
+    if (saved === 'light') return 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function loadGiscus(theme) {
+    // Remove existing iframe
+    const existing = container.querySelector('iframe.giscus-frame');
+    if (existing) existing.remove();
+
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'EricYXZ/EricYXZ.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOTJfLng');
+    script.setAttribute('data-category', 'Guestbook');
+    script.setAttribute('data-category-id', 'DIC_kwDOTJfLns4DARSG');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', theme);
+    script.setAttribute('data-lang', 'zh-CN');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    container.appendChild(script);
+  }
+
+  // Initial load
+  loadGiscus(getGiscusTheme());
+
+  // Expose reload function for theme toggle
+  window.reloadGiscus = function (theme) {
+    loadGiscus(theme);
+  };
+})();
+
 // ===== Theme Toggle =====
 (function () {
   const toggle = document.querySelector('.theme-toggle');
@@ -107,24 +151,12 @@
   const iconSun = toggle.querySelector('.icon-sun');
   const iconMoon = toggle.querySelector('.icon-moon');
 
-  // Sync Giscus theme
-  function syncGiscusTheme(theme) {
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (!iframe) return;
-    const giscusTheme = theme === 'dark' ? 'dark' : 'light';
-    iframe.contentWindow.postMessage(
-      { giscus: { setConfig: { theme: giscusTheme } } },
-      'https://giscus.app'
-    );
-  }
-
   // Load saved preference
   const saved = localStorage.getItem('theme');
   if (saved) {
     html.setAttribute('data-theme', saved);
   }
   updateIcon();
-  setTimeout(() => syncGiscusTheme(saved || 'light'), 800);
 
   toggle.addEventListener('click', () => {
     const current = html.getAttribute('data-theme');
@@ -132,7 +164,11 @@
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     updateIcon();
-    syncGiscusTheme(next);
+
+    // Reload Giscus with new theme
+    if (typeof window.reloadGiscus === 'function') {
+      window.reloadGiscus(next);
+    }
   });
 
   function updateIcon() {
