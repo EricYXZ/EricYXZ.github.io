@@ -129,6 +129,11 @@
   border-color: rgba(255, 255, 255, 0.6);
 }
 
+[data-theme="dark"] .nav a.active,
+[data-theme="dark"] .nav a:hover {
+  color: #ffffff;
+}
+
 /* --- 显式深色模式文字颜色 --- */
 [data-theme="dark"] .section h2,
 [data-theme="dark"] .section-heading h2,
@@ -311,6 +316,11 @@
   :root:not([data-theme="light"]) .button.secondary {
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  :root:not([data-theme="light"]) .nav a.active,
+  :root:not([data-theme="light"]) .nav a:hover {
+    color: #ffffff;
   }
 
   /* --- 显式深色模式文字颜色（系统自动检测） --- */
