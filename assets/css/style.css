@@ -564,6 +564,23 @@ body > main > .container:first-child {
   padding: 2px 0;
 }
 
+.certificate-link::after {
+  content: "证书";
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #e6f0ff;
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.certificate-link:hover::after {
+  color: var(--paper);
+  background: var(--blue);
+}
+
 .certificate-missing {
   color: var(--muted);
   font-size: 14px;
