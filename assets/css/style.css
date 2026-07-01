@@ -412,6 +412,44 @@ body > main > .container:first-child {
   font-size: 14px;
 }
 
+.award-group {
+  margin-top: 16px;
+}
+
+.award-toggle {
+  width: fit-content;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--blue-dark);
+  background: var(--paper);
+  cursor: pointer;
+  font-weight: 850;
+  user-select: none;
+}
+
+.award-toggle:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 8px 18px rgba(9, 33, 72, 0.08);
+}
+
+.award-list {
+  margin-top: 22px;
+}
+
+.certificate-link {
+  white-space: nowrap;
+}
+
+.certificate-missing {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 ul {
   margin: 8px 0 0;
   padding-left: 22px;
