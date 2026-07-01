@@ -107,12 +107,24 @@
   const iconSun = toggle.querySelector('.icon-sun');
   const iconMoon = toggle.querySelector('.icon-moon');
 
+  // Sync Giscus theme
+  function syncGiscusTheme(theme) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    const giscusTheme = theme === 'dark' ? 'dark' : 'light';
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: giscusTheme } } },
+      'https://giscus.app'
+    );
+  }
+
   // Load saved preference
   const saved = localStorage.getItem('theme');
   if (saved) {
     html.setAttribute('data-theme', saved);
   }
   updateIcon();
+  setTimeout(() => syncGiscusTheme(saved || 'light'), 800);
 
   toggle.addEventListener('click', () => {
     const current = html.getAttribute('data-theme');
@@ -120,6 +132,7 @@
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     updateIcon();
+    syncGiscusTheme(next);
   });
 
   function updateIcon() {
