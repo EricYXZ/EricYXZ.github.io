@@ -339,4 +339,10 @@
     if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   });
+
+  // Update photo count
+  const countEl = document.getElementById('photo-count');
+  if (countEl) {
+    countEl.textContent = items.length + ' 张';
+  }
 })();

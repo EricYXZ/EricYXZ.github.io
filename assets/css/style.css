@@ -1654,3 +1654,76 @@ ul {
 .photo-card:hover::after {
   opacity: 1;
 }
+
+/* ===== Gallery Enhancements ===== */
+.photo-count {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.gallery-title-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-group {
+  margin-top: 36px;
+}
+
+.photo-group + .photo-group {
+  margin-top: 48px;
+}
+
+.photo-group-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--line);
+}
+
+.photo-group-date {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.photo-group-header h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 20px;
+}
+
+/* Photo hover overlay */
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.photo-card:hover .photo-overlay {
+  opacity: 1;
+}
+
+.photo-overlay-icon {
+  font-size: 36px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
