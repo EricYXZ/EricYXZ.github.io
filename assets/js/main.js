@@ -254,3 +254,89 @@
     createParticles();
   });
 })();
+
+// ===== Lightbox =====
+(function () {
+  const photos = document.querySelectorAll('.photo-card');
+  if (!photos.length) return;
+
+  // Build lightbox DOM
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = `
+    <button class="lightbox-close" aria-label="关闭">✕</button>
+    <button class="lightbox-prev" aria-label="上一张">‹</button>
+    <button class="lightbox-next" aria-label="下一张">›</button>
+    <img src="" alt="">
+    <div class="lightbox-counter"></div>
+    <div class="lightbox-caption"></div>
+  `;
+  document.body.appendChild(lb);
+
+  const img = lb.querySelector('img');
+  const caption = lb.querySelector('.lightbox-caption');
+  const counter = lb.querySelector('.lightbox-counter');
+  const closeBtn = lb.querySelector('.lightbox-close');
+  const prevBtn = lb.querySelector('.lightbox-prev');
+  const nextBtn = lb.querySelector('.lightbox-next');
+
+  let currentIdx = 0;
+  const items = [];
+
+  photos.forEach((card, i) => {
+    const el = card.querySelector('img');
+    const strong = card.querySelector('strong');
+    const span = card.querySelector('figcaption span');
+    if (!el) return;
+    items.push({
+      src: el.src,
+      alt: el.alt || '',
+      caption: strong ? strong.textContent : '',
+      date: span ? span.textContent : ''
+    });
+    card.addEventListener('click', () => open(i));
+  });
+
+  function open(idx) {
+    if (idx < 0 || idx >= items.length) return;
+    currentIdx = idx;
+    const item = items[idx];
+    img.src = item.src;
+    img.alt = item.alt;
+    caption.textContent = item.caption + (item.date ? ' · ' + item.date : '');
+    counter.textContent = (idx + 1) + ' / ' + items.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    prevBtn.style.display = items.length > 1 ? '' : 'none';
+    nextBtn.style.display = items.length > 1 ? '' : 'none';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function prev() {
+    const idx = currentIdx > 0 ? currentIdx - 1 : items.length - 1;
+    open(idx);
+  }
+
+  function next() {
+    const idx = currentIdx < items.length - 1 ? currentIdx + 1 : 0;
+    open(idx);
+  }
+
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+})();
