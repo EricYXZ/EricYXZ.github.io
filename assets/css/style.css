@@ -2655,7 +2655,8 @@ body {
 }
 
 /* Minimal Light uses Crimson Pro as its default serif face. */
-.english-home {
+.english-home,
+.english-page {
   font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
   font-size: 17px;
   line-height: 1.65;
@@ -2672,6 +2673,32 @@ body {
 .english-home .profile-facts dt,
 .english-home .visitor-stats {
   letter-spacing: 0;
+}
+
+.english-page .brand,
+.english-page .nav a,
+.english-page .language-switch,
+.english-page .button,
+.english-page .section-kicker,
+.english-page .card-link,
+.english-page .profile-facts dt,
+.english-page .visitor-stats {
+  letter-spacing: 0;
+}
+
+.english-page .page-title {
+  font-size: clamp(40px, 5vw, 54px);
+}
+
+.english-page .page-intro,
+.english-page .entry,
+.english-page .summary,
+.english-page .empty-note,
+.english-page .card,
+.english-page .tag,
+.english-page .award-toggle,
+.english-page .gallery-caption {
+  font-size: 17px;
 }
 
 .english-home .academic-profile h1 {

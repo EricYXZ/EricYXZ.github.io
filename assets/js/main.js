@@ -344,6 +344,9 @@
   // Update photo count
   const countEl = document.getElementById('photo-count');
   if (countEl) {
-    countEl.textContent = items.length + ' 张';
+    const isEnglish = (document.documentElement.lang || '').startsWith('en');
+    countEl.textContent = isEnglish
+      ? `${items.length} ${items.length === 1 ? 'photo' : 'photos'}`
+      : items.length + ' 张';
   }
 })();
