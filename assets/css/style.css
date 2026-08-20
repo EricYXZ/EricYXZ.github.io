@@ -2383,6 +2383,19 @@ body {
   line-height: 1.65;
 }
 
+.profile-affiliation a {
+  color: var(--blue-dark);
+  text-decoration: underline;
+  text-decoration-color: rgba(31, 95, 159, 0.28);
+  text-underline-offset: 3px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.profile-affiliation a:hover {
+  color: var(--blue);
+  text-decoration-color: currentColor;
+}
+
 .profile-facts {
   margin: 24px 0 0;
 }
