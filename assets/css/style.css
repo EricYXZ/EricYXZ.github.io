@@ -2419,6 +2419,49 @@ body {
   text-underline-offset: 3px;
 }
 
+.profile-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.profile-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.profile-contact-item svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.profile-contact-item span {
+  overflow-wrap: anywhere;
+}
+
+.profile-contact-item:hover {
+  color: var(--blue-dark);
+  transform: translateX(2px);
+}
+
+.english-home .profile-contact-item,
+.english-page .profile-contact-item {
+  font-size: 15px;
+}
+
 .profile-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2543,7 +2586,8 @@ body {
   }
 
   .profile-facts,
-  .profile-actions {
+  .profile-actions,
+  .profile-contact {
     grid-column: 1 / -1;
   }
 
@@ -2590,6 +2634,12 @@ body {
 
   .profile-actions {
     justify-content: center;
+  }
+
+  .profile-contact {
+    max-width: 260px;
+    margin: 20px auto 0;
+    text-align: left;
   }
 }
 
