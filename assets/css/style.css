@@ -2384,16 +2384,16 @@ body {
 }
 
 .profile-affiliation a {
-  color: var(--blue-dark);
-  text-decoration: underline;
-  text-decoration-color: rgba(31, 95, 159, 0.28);
-  text-underline-offset: 3px;
-  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.18s ease;
 }
 
 .profile-affiliation a:hover {
-  color: var(--blue);
-  text-decoration-color: currentColor;
+  color: inherit;
+  text-decoration: none;
+  transform: translateX(2px);
 }
 
 .profile-facts {
@@ -2466,7 +2466,7 @@ body {
 }
 
 .profile-contact-item:hover {
-  color: var(--blue-dark);
+  color: var(--text);
   transform: translateX(2px);
 }
 
