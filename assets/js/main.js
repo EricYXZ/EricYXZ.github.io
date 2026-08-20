@@ -127,7 +127,8 @@
     script.setAttribute('data-emit-metadata', '1');
     script.setAttribute('data-input-position', 'bottom');
     script.setAttribute('data-theme', theme);
-    script.setAttribute('data-lang', 'zh-CN');
+    const pageLanguage = document.documentElement.lang || 'zh-CN';
+    script.setAttribute('data-lang', pageLanguage.startsWith('en') ? 'en' : 'zh-CN');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
     container.appendChild(script);

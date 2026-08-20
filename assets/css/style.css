@@ -2620,3 +2620,126 @@ body {
     justify-content: center;
   }
 }
+
+/* ===== Chinese / English homepage switch ===== */
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.language-switch a,
+.language-switch span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+}
+
+.language-switch a {
+  color: var(--muted);
+  transition: color 0.18s ease;
+}
+
+.language-switch a:hover,
+.language-switch .active {
+  color: var(--blue-dark);
+}
+
+.language-switch .active {
+  font-weight: 700;
+}
+
+/* Minimal Light uses Crimson Pro as its default serif face. */
+.english-home {
+  font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.english-home .brand,
+.english-home .nav a,
+.english-home .language-switch,
+.english-home .button,
+.english-home .meta-label,
+.english-home .section-kicker,
+.english-home .feature-mark,
+.english-home .card-link,
+.english-home .profile-facts dt,
+.english-home .visitor-stats {
+  letter-spacing: 0;
+}
+
+.english-home .academic-profile h1 {
+  font-size: 34px;
+}
+
+.english-home .profile-role {
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.english-home .profile-affiliation,
+.english-home .profile-facts dd {
+  font-size: 15px;
+}
+
+.english-home .academic-home-content .lead {
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.english-home .feature h3,
+.english-home .card h3 {
+  font-size: 20px;
+}
+
+.english-home .feature p,
+.english-home .card p {
+  font-size: 16px;
+}
+
+.english-home .guestbook-intro {
+  margin-bottom: 24px;
+  color: var(--muted);
+}
+
+.english-home .guestbook-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  .language-switch {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .theme-toggle {
+    order: 3;
+  }
+
+  .hamburger {
+    order: 4;
+  }
+
+  .nav {
+    order: 5;
+  }
+}
+
+@media (max-width: 420px) {
+  .language-switch {
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .english-home .academic-profile h1 {
+    font-size: 32px;
+  }
+}
