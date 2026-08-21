@@ -907,7 +907,7 @@ body > main > .container:first-child {
 
 .animated-details > .award-list {
   max-height: var(--details-height, none);
-  overflow: hidden;
+  overflow: visible;
   opacity: 1;
   transform: translateY(0);
   transition: max-height 0.26s ease, opacity 0.22s ease, transform 0.22s ease;
@@ -916,12 +916,14 @@ body > main > .container:first-child {
 .animated-details.is-closing > .award-list,
 .animated-details:not([open]) > .award-list {
   max-height: 0;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(-8px);
 }
 
 .animated-details.is-opening > .award-list {
   max-height: var(--details-height, 1000px);
+  overflow: hidden;
   opacity: 1;
   transform: translateY(0);
 }
