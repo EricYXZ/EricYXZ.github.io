@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>叶煊喆 | Gallery</title>
+  <title>叶煊喆 | 相册</title>
   <meta name="description" content="叶煊喆的生活相册 — 校园、旅行、项目与日常中的重要瞬间。">
   <link rel="alternate" hreflang="zh-CN" href="https://ericyxz.github.io/gallery/">
   <link rel="alternate" hreflang="en" href="https://ericyxz.github.io/en/gallery/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260820-serif">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260821-site-refresh">
 </head>
 
 <body>
@@ -42,35 +42,29 @@
   <main>
     <div class="container">
       <h1 class="page-title">相册</h1>
-      <p class="page-intro">Campus, travel, projects, and everyday moments.</p>
+      <p class="page-intro">按内容分类记录校园、旅行、项目与日常片段。</p>
 
       <section class="section">
         <div class="gallery-heading">
           <div class="gallery-title-row">
-            <p class="section-kicker">Gallery</p>
+            <p class="section-kicker">内容分类</p>
             <h2>照片集 <span class="photo-count" id="photo-count"></span></h2>
           </div>
           <p class="gallery-caption">点击照片可放大浏览，支持键盘左右切换。</p>
         </div>
 
-        <details class="photo-group animated-details" open>
-          <summary class="photo-group-header reveal">
-            <span class="photo-group-date">2026</span>
-          </summary>
+        <div class="gallery-filters" role="group" aria-label="相册分类筛选">
+          <button class="gallery-filter active" type="button" data-gallery-filter="all" aria-pressed="true">全部</button>
+          <button class="gallery-filter" type="button" data-gallery-filter="travel" aria-pressed="false">旅行</button>
+        </div>
 
-          <div class="photo-grid award-list">
-            <figure class="photo-card photo-card--wide reveal reveal-delay-1">
-              <div class="photo-overlay">
-                <span class="photo-overlay-icon">🔍</span>
-              </div>
-              <img src="/assets/photos/%5B3.14%5D%5B%E5%8C%97%E4%BA%AC%E7%8E%AF%E7%90%83%E5%BD%B1%E5%9F%8E%5D%5B%E9%9C%8D%E6%A0%BC%E6%B2%83%E8%8C%A8%E5%9F%8E%E5%A0%A1%E7%81%AF%E5%85%89%E7%A7%80%5D.jpg" alt="北京环球影城霍格沃茨城堡灯光秀" loading="lazy">
-              <figcaption>
-                <strong>北京·环球影城·霍格沃茨城堡灯光秀</strong>
-                <span>3.14</span>
-              </figcaption>
-            </figure>
-          </div>
-        </details>
+        <div class="photo-grid masonry" data-gallery-grid>
+          <figure class="photo-card photo-card--wide reveal reveal-delay-1" data-gallery-card data-gallery-category="travel">
+            <div class="photo-overlay"><span class="photo-overlay-icon">🔍</span></div>
+            <img src="/assets/photos/%5B3.14%5D%5B%E5%8C%97%E4%BA%AC%E7%8E%AF%E7%90%83%E5%BD%B1%E5%9F%8E%5D%5B%E9%9C%8D%E6%A0%BC%E6%B2%83%E8%8C%A8%E5%9F%8E%E5%A0%A1%E7%81%AF%E5%85%89%E7%A7%80%5D.jpg" alt="北京环球影城霍格沃茨城堡灯光秀" loading="lazy">
+            <figcaption><strong>北京·环球影城·霍格沃茨城堡灯光秀</strong><span>旅行 · 2026.3.14</span></figcaption>
+          </figure>
+        </div>
       </section>
     </div>
   </main>
@@ -81,7 +75,8 @@
       累计访问 <span id="busuanzi_value_site_pv"></span> 次 · 累计访客 <span id="busuanzi_value_site_uv"></span> 人
     </div>
   </footer>
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=20260821-gallery"></script>
+  <script src="/assets/js/gallery.js?v=20260821-gallery"></script>
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
