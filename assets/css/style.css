@@ -935,6 +935,19 @@ body > main > .container:first-child {
   padding: 2px 0;
 }
 
+.award-list .certificate-link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  transition: transform 0.18s ease;
+}
+
+.award-list .certificate-link:hover {
+  color: inherit;
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
 .certificate-missing {
   color: var(--muted);
   font-size: 14px;
