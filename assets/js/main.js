@@ -351,38 +351,118 @@
   }
 })();
 
-// ===== Manual looping snapshot strip =====
+// ===== Momentum scrolling for compact homepage sections =====
 (function () {
-  const marquees = document.querySelectorAll('.snapshot-marquee');
-  if (!marquees.length) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  marquees.forEach((marquee) => {
-    const track = marquee.querySelector('.snapshot-track');
-    if (!track) return;
+  const normalizeWheelDelta = (event, element) => {
+    const rawDelta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
+      ? event.deltaX
+      : event.deltaY;
+    if (event.deltaMode === 1) return rawDelta * 16;
+    if (event.deltaMode === 2) return rawDelta * element.clientHeight;
+    return rawDelta;
+  };
 
-    const moveBy = (delta) => {
-      const cycleWidth = track.scrollWidth / 2;
-      if (!cycleWidth) return;
+  const addMomentumScroller = ({ element, axis, getLoopSize }) => {
+    if (!element) return;
 
-      let next = marquee.scrollLeft + delta;
-      while (next >= cycleWidth) next -= cycleWidth;
-      while (next < 0) next += cycleWidth;
-      marquee.scrollLeft = next;
+    let velocity = 0;
+    let animationFrame = 0;
+    const friction = 0.9;
+    const impulse = 0.16;
+    const maxVelocity = 48;
+    const positionKey = axis === 'x' ? 'scrollLeft' : 'scrollTop';
+
+    const stop = () => {
+      velocity = 0;
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
     };
 
-    marquee.addEventListener('wheel', (event) => {
-      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
-        ? event.deltaX
-        : event.deltaY;
+    const setPosition = (next) => {
+      const loopSize = getLoopSize ? getLoopSize() : 0;
+      if (loopSize > 0) {
+        while (next >= loopSize) next -= loopSize;
+        while (next < 0) next += loopSize;
+      } else {
+        const maxPosition = axis === 'x'
+          ? element.scrollWidth - element.clientWidth
+          : element.scrollHeight - element.clientHeight;
+        next = Math.max(0, Math.min(maxPosition, next));
+      }
+      element[positionKey] = next;
+      return next;
+    };
+
+    const animate = () => {
+      const current = element[positionKey];
+      const next = setPosition(current + velocity);
+      const hitBoundary = !getLoopSize && next === current && Math.abs(velocity) > 0;
+      velocity *= friction;
+
+      if (hitBoundary || Math.abs(velocity) < 0.08) {
+        stop();
+        return;
+      }
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    const push = (delta) => {
+      if (reduceMotion) {
+        setPosition(element[positionKey] + delta);
+        return;
+      }
+      velocity = Math.max(-maxVelocity, Math.min(maxVelocity, velocity + delta * impulse));
+      if (!animationFrame) animationFrame = requestAnimationFrame(animate);
+    };
+
+    element.addEventListener('wheel', (event) => {
+      const delta = normalizeWheelDelta(event, element);
       if (!delta) return;
+
+      if (!getLoopSize) {
+        const maxPosition = axis === 'x'
+          ? element.scrollWidth - element.clientWidth
+          : element.scrollHeight - element.clientHeight;
+        const atStart = element[positionKey] <= 0 && delta < 0;
+        const atEnd = element[positionKey] >= maxPosition - 1 && delta > 0;
+        if (atStart || atEnd) {
+          stop();
+          return;
+        }
+      }
+
       event.preventDefault();
-      moveBy(delta);
+      push(delta);
     }, { passive: false });
 
-    marquee.addEventListener('keydown', (event) => {
-      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    element.addEventListener('keydown', (event) => {
+      const backward = axis === 'x' ? event.key === 'ArrowLeft' : event.key === 'ArrowUp';
+      const forward = axis === 'x' ? event.key === 'ArrowRight' : event.key === 'ArrowDown';
+      if (!backward && !forward) return;
       event.preventDefault();
-      moveBy(event.key === 'ArrowLeft' ? -180 : 180);
+      push(backward ? -180 : 180);
+    });
+  };
+
+  document.querySelectorAll('.academic-home-content .home-honors-list').forEach((list) => {
+    if (!list.hasAttribute('tabindex')) list.tabIndex = 0;
+    addMomentumScroller({ element: list, axis: 'y' });
+  });
+
+  document.querySelectorAll('.snapshot-marquee').forEach((marquee) => {
+    const track = marquee.querySelector('.snapshot-track');
+    const cards = track ? track.querySelectorAll('.snapshot-card') : [];
+    if (!track || cards.length < 2) return;
+
+    addMomentumScroller({
+      element: marquee,
+      axis: 'x',
+      getLoopSize: () => {
+        const firstClone = cards[Math.floor(cards.length / 2)];
+        return firstClone ? firstClone.offsetLeft - cards[0].offsetLeft : 0;
+      }
     });
   });
 })();

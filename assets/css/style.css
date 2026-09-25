@@ -2540,7 +2540,17 @@ body {
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-block: 18px;
-  mask-image: linear-gradient(to bottom, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.34) 15%,
+    rgba(0, 0, 0, 0.72) 29%,
+    #000 42%,
+    #000 58%,
+    rgba(0, 0, 0, 0.72) 71%,
+    rgba(0, 0, 0, 0.34) 85%,
+    transparent 100%
+  );
   scrollbar-width: none;
 }
 
@@ -3317,5 +3327,40 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .snapshot-marquee {
     mask-image: none;
+  }
+}
+
+/* ===== Persistent navigation ===== */
+body {
+  padding-top: 66px;
+}
+
+.nav-wrap {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: max(24px, calc((100vw - 1080px) / 2));
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  box-shadow: 0 7px 22px rgba(29, 42, 57, 0.06);
+  backdrop-filter: blur(14px);
+}
+
+@media (max-width: 720px) {
+  body {
+    padding-top: 62px;
+  }
+
+  .nav-wrap {
+    min-height: 62px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
   }
 }
