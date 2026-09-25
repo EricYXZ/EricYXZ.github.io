@@ -2535,7 +2535,8 @@ body {
   list-style: none;
 }
 
-.academic-home-content .home-honors-list {
+.academic-home-content .home-honors-list,
+.cv-page .cv-honors-list {
   max-height: 270px;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -2554,11 +2555,13 @@ body {
   scrollbar-width: none;
 }
 
-.academic-home-content .home-honors-list::-webkit-scrollbar {
+.academic-home-content .home-honors-list::-webkit-scrollbar,
+.cv-page .cv-honors-list::-webkit-scrollbar {
   display: none;
 }
 
-.academic-home-content .home-honors-list li {
+.academic-home-content .home-honors-list li,
+.cv-page .cv-honors-list li {
   transform: translateY(var(--honors-overscroll, 0px));
   will-change: transform;
 }
@@ -3136,50 +3139,47 @@ body {
   overflow-wrap: anywhere;
 }
 
-.cv-facts-list {
-  margin: 0;
-  padding: 8px 17px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--paper);
-}
-
-.cv-facts-list > div {
-  grid-template-columns: 92px minmax(0, 1fr);
-}
-
 .cv-education-list {
   display: grid;
-  gap: 14px;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .cv-education-item {
-  padding: 20px 22px;
-  border: 1px solid var(--line);
-  border-left: 3px solid rgba(37, 99, 235, 0.52);
-  border-radius: 10px;
-  background: var(--paper);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: grid;
+  grid-template-columns: minmax(230px, 1.15fr) minmax(270px, 1.35fr) minmax(150px, 0.7fr);
+  gap: 24px;
+  align-items: center;
+  padding: 19px 4px;
+  border-bottom: 1px solid var(--line);
 }
 
-.cv-education-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+.cv-education-item:last-child {
+  border-bottom: 0;
 }
 
 .cv-education-item h3,
 .cv-education-item p {
-  margin-top: 0;
+  margin: 0;
 }
 
 .cv-education-item h3 {
-  margin-bottom: 0;
   color: var(--ink);
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
-.cv-education-item p:last-child {
-  margin-bottom: 0;
+.cv-education-major {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.cv-education-item .date {
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .cv-page .cv-honors-list {
@@ -3188,40 +3188,6 @@ body {
 
 .cv-page .cv-projects .entry:last-child {
   padding-bottom: 0;
-}
-
-.cv-facts-list > div {
-  display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 10px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.cv-facts-list > div:last-child {
-  border-bottom: 0;
-}
-
-.cv-facts-list dt,
-.cv-facts-list dd {
-  margin: 0;
-}
-
-.cv-facts-list dt {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.cv-facts-list dd {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  color: var(--text);
-  font-size: 14px;
-}
-
-.cv-facts-list a {
-  color: var(--blue-dark);
 }
 
 .cv-page .award-group {
@@ -3293,6 +3259,11 @@ body {
   .cv-page .award-list {
     grid-template-columns: 1fr;
   }
+
+  .cv-education-item {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr) minmax(112px, 0.7fr);
+    gap: 16px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -3322,6 +3293,23 @@ body {
 
   .cv-contact-line {
     grid-column: 1 / -1;
+  }
+
+  .cv-education-item {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) minmax(82px, 0.72fr);
+    gap: 10px;
+    padding: 16px 0;
+  }
+
+  .cv-education-item h3,
+  .cv-education-major {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-education-item .date {
+    font-size: 12px;
+    white-space: normal;
   }
 
   .project-section--research {

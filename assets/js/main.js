@@ -513,7 +513,7 @@
     });
   };
 
-  document.querySelectorAll('.academic-home-content .home-honors-list').forEach((list) => {
+  document.querySelectorAll('.academic-home-content .home-honors-list, .cv-page .cv-honors-list').forEach((list) => {
     if (!list.hasAttribute('tabindex')) list.tabIndex = 0;
     addMomentumScroller({
       element: list,
