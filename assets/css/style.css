@@ -2529,9 +2529,6 @@ body {
 }
 
 .home-honors-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 24px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -2539,15 +2536,15 @@ body {
 
 .home-honors-list li {
   min-width: 0;
-  padding-bottom: 14px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
+  line-height: 1.7;
 }
 
 .home-honors-list .honor-name {
-  display: block;
+  display: inline;
   color: var(--ink);
   font-weight: 650;
-  line-height: 1.5;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
@@ -2558,10 +2555,14 @@ body {
 }
 
 .home-honors-list .honor-result {
-  display: block;
-  margin-top: 5px;
+  display: inline;
   color: var(--muted);
   font-size: 13px;
+}
+
+.home-honors-list .honor-result::before {
+  content: " · ";
+  white-space: pre;
 }
 
 .academic-home-content .section {
@@ -2624,10 +2625,6 @@ body {
 }
 
 @media (max-width: 720px) {
-  .home-honors-list {
-    grid-template-columns: 1fr;
-  }
-
   .academic-home-layout {
     grid-template-columns: 1fr;
     gap: 42px;
