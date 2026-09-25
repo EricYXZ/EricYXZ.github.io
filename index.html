@@ -18,13 +18,13 @@
   <meta property="og:image" content="https://ericyxz.github.io/assets/img/avatar.png">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='8' y='8' width='16' height='16' rx='2' fill='%23ffffff' stroke='%231f5f9f' stroke-width='2.4'/><circle cx='12' cy='12' r='1.6' fill='%231f5f9f'/><path d='M12 2v5M16 2v5M20 2v5M12 25v5M16 25v5M20 25v5M2 12h5M2 16h5M2 20h5M25 12h5M25 16h5M25 20h5' stroke='%231f5f9f' stroke-width='2'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
   <!-- Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260925-silicon">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260821-site-refresh">
 </head>
 
 <body>
@@ -61,17 +61,8 @@
 
   <main class="home-main">
     <div class="container academic-home-layout">
-      <aside class="academic-profile" aria-label="个人基本信息">
-        <figure class="chip-package">
-          <span class="chip-pins chip-pins--top" aria-hidden="true"></span>
-          <span class="chip-pins chip-pins--right" aria-hidden="true"></span>
-          <span class="chip-pins chip-pins--bottom" aria-hidden="true"></span>
-          <span class="chip-pins chip-pins--left" aria-hidden="true"></span>
-          <span class="chip-body">
-            <img class="profile-avatar" src="/assets/img/avatar.png" alt="叶煊喆的头像" width="180" height="180">
-            <span class="chip-mark" aria-hidden="true">HUST IC 2301</span>
-          </span>
-        </figure>
+      <aside class="academic-profile reveal" aria-label="个人基本信息">
+        <img class="profile-avatar" src="/assets/img/avatar.png" alt="叶煊喆的头像" width="180" height="180">
         <h1>叶煊喆</h1>
         <p class="profile-role">集成电路设计与集成系统本科生</p>
         <p class="profile-affiliation"><a href="https://www.hust.edu.cn/" target="_blank" rel="noopener noreferrer">华中科技大学</a><br><a href="https://ic.hust.edu.cn/" target="_blank" rel="noopener noreferrer">集成电路学院</a></p>
@@ -101,8 +92,9 @@
 
       <div class="academic-home-content">
         <section class="home-section intro-band">
-          <div class="intro-grid">
+          <div class="intro-grid reveal">
         <div>
+          <p class="section-kicker">个人简介</p>
           <h2>关于我</h2>
         </div>
         <p class="lead">
@@ -112,82 +104,93 @@
         </section>
 
         <section class="section">
-      <div class="section-heading">
+      <div class="section-heading reveal">
+        <p class="section-kicker">重点信息</p>
         <h2>重点信息</h2>
       </div>
 
-      <dl class="spec-list">
-            <div>
-              <dt>研究兴趣</dt>
-              <dd>数字电路设计、AI for IC、强化学习。</dd>
-            </div>
-            <div>
-              <dt>工程能力</dt>
-              <dd>Python、C++、Verilog、Vivado、LaTeX。</dd>
-            </div>
-            <div>
-              <dt>当前目标</dt>
-              <dd>准备保研。</dd>
-            </div>
-          </dl>
+      <div class="feature-grid">
+        <article class="feature reveal reveal-delay-1">
+          <span class="feature-mark">01</span>
+          <h3>研究兴趣</h3>
+          <p>数字电路设计、AI for IC、强化学习。</p>
+        </article>
+        <article class="feature reveal reveal-delay-2">
+          <span class="feature-mark">02</span>
+          <h3>工程能力</h3>
+          <p>Python、C++、Verilog、Vivado、LaTeX。</p>
+        </article>
+        <article class="feature reveal reveal-delay-3">
+          <span class="feature-mark">03</span>
+          <h3>当前目标</h3>
+          <p>准备保研。</p>
+        </article>
+      </div>
         </section>
 
         <section class="section">
-      <div class="section-heading">
+      <div class="section-heading reveal">
+        <p class="section-kicker">内容导航</p>
         <h2>内容导航</h2>
       </div>
 
-      <div class="link-list">
-        <a class="link-row" href="/cv/">
-          <span class="link-pad" aria-hidden="true">
+      <div class="card-grid home-card-grid">
+        <a class="card reveal reveal-delay-1" href="/cv/">
+          <span class="card-icon">
             <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="6" y1="16" x2="12" y2="16"/></svg>
           </span>
-          <span class="link-title">个人简历</span>
-          <span class="link-desc">教育经历、技能、荣誉与个人联系方式。</span>
+          <h3>个人简历</h3>
+          <p>教育经历、技能、荣誉与个人联系方式。</p>
+          <span class="card-link">进入简历页面</span>
         </a>
 
-        <a class="link-row" href="/projects/">
-          <span class="link-pad" aria-hidden="true">
+        <a class="card reveal reveal-delay-2" href="/projects/">
+          <span class="card-icon">
             <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </span>
-          <span class="link-title">项目经历</span>
-          <span class="link-desc">竞赛、工程开发、数据分析与系统实现成果。</span>
+          <h3>项目经历</h3>
+          <p>竞赛、工程开发、数据分析与系统实现成果。</p>
+          <span class="card-link">进入项目页面</span>
         </a>
 
-        <a class="link-row" href="/research/">
-          <span class="link-pad" aria-hidden="true">
+        <a class="card reveal reveal-delay-3" href="/research/">
+          <span class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.32L7 19.5V4.5A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.32L17 19.5V4.5A2.5 2.5 0 0 0 14.5 2z"/></svg>
           </span>
-          <span class="link-title">科研经历</span>
-          <span class="link-desc">研究项目、论文阅读、方法探索与学术成果。</span>
+          <h3>科研经历</h3>
+          <p>研究项目、论文阅读、方法探索与学术成果。</p>
+          <span class="card-link">进入科研页面</span>
         </a>
 
-        <a class="link-row" href="/blog/">
-          <span class="link-pad" aria-hidden="true">
+        <a class="card reveal reveal-delay-4" href="/blog/">
+          <span class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           </span>
-          <span class="link-title">技术笔记</span>
-          <span class="link-desc">课程学习、论文阅读、复现记录与思考总结。</span>
+          <h3>技术笔记</h3>
+          <p>课程学习、论文阅读、复现记录与思考总结。</p>
+          <span class="card-link">进入笔记页面</span>
         </a>
 
-        <a class="link-row" href="/gallery/">
-          <span class="link-pad" aria-hidden="true">
+        <a class="card reveal reveal-delay-4" href="/gallery/">
+          <span class="card-icon">
             <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="16" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           </span>
-          <span class="link-title">生活相册</span>
-          <span class="link-desc">记录校园、旅行、项目与日常中的重要瞬间。</span>
+          <h3>生活相册</h3>
+          <p>记录校园、旅行、项目与日常中的重要瞬间。</p>
+          <span class="card-link">进入相册页面</span>
         </a>
       </div>
         </section>
 
     <!-- 留言区 -->
         <section class="section">
-      <div class="section-heading">
+      <div class="section-heading reveal">
+        <p class="section-kicker">访客留言</p>
         <h2>访客留言</h2>
       </div>
-      <p class="guestbook-intro">欢迎留下你的足迹，任何想法、建议或问候都可以 👋</p>
-      <div id="giscus-container"></div>
-      <p class="guestbook-note">
+      <p class="reveal" style="color:var(--muted);margin-bottom:24px;">欢迎留下你的足迹，任何想法、建议或问候都可以 👋</p>
+      <div class="reveal" id="giscus-container"></div>
+      <p class="reveal" style="font-size:13px;color:var(--muted);margin-top:12px;">
         使用 GitHub 账号登录即可留言。如需删除，请前往
         <a class="text-link" href="https://github.com/EricYXZ/EricYXZ.github.io/discussions/categories/guestbook" target="_blank" rel="noopener noreferrer">Discussions 管理页面</a>。
       </p>
