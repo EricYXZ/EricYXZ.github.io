@@ -86,17 +86,34 @@ main {
 }
 
 .gsc-homepage-bg { background-color: #141f30; }
-.gsc-main { color: var(--color-fg-default); }
-.gsc-comment-box,
-.gsc-comment { border: 1px solid var(--color-border-default); border-radius: 8px; overflow: hidden; box-shadow: 0 8px 22px rgb(0 0 0 / 22%); }
-.gsc-comment-box-tabs,
-.gsc-comment-header { background: var(--color-canvas-subtle); }
-.gsc-comment-box-textarea { border-radius: 8px !important; background: var(--color-canvas-inset); box-shadow: none !important; }
+.gsc-main { gap: 24px; color: var(--color-fg-default); }
+.gsc-comments { gap: 18px; }
+.gsc-comment > div,
+.gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  background: var(--color-canvas-default);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 28%);
+}
+.gsc-comment-header {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--color-border-muted);
+  background: linear-gradient(135deg, #1d3150, #19283d);
+}
+.gsc-comment-content { padding: 18px; }
+.gsc-comment-footer { margin: 0 !important; padding: 0 14px 14px; }
+.gsc-reply-box { border-color: var(--color-border-muted); background: var(--color-canvas-inset); }
+.gsc-comment-box-tabs { border-color: var(--color-border-muted); background: linear-gradient(135deg, #1d3150, #19283d); }
+.gsc-comment-box-main { margin: 14px; }
+.gsc-comment-box-textarea { border-color: var(--color-border-default); border-radius: 8px 8px 0 0 !important; background: var(--color-canvas-inset); box-shadow: none !important; }
+.gsc-comment-box-textarea-extras { border-color: var(--color-border-default); border-radius: 0 0 8px 8px !important; background: #19283d; }
 .gsc-reactions-button,
 .btn,
 .form-control { border-radius: 8px !important; }
 .btn { font-family: inherit; }
-.gsc-timeline { gap: 14px; }
+.btn-primary { box-shadow: 0 6px 16px rgb(0 0 0 / 26%); }
+.gsc-timeline { gap: 18px; }
 .gsc-reactions-count { color: var(--color-fg-muted); }
 
 main .pagination-loader-container {

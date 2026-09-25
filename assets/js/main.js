@@ -112,7 +112,7 @@
 
   function getGiscusTheme(theme) {
     const fileName = theme === 'dark' ? 'giscus-dark.css' : 'giscus-light.css';
-    return `https://ericyxz.github.io/assets/css/${fileName}?v=20260925`;
+    return `https://ericyxz.github.io/assets/css/${fileName}?v=20260925-ui2`;
   }
 
   function loadGiscus(theme) {
