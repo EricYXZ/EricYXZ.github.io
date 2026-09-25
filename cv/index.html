@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260925-cv-education">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260925-cv-skills">
 </head>
 <body class="cv-page">
   <header class="site-header">
@@ -67,18 +67,45 @@
         </ul>
       </section>
 
-      <section class="section cv-skills"><h2>专业技能</h2><div class="tags"><span class="tag">Verilog HDL</span><span class="tag">FPGA</span><span class="tag">Python</span><span class="tag">C/C++</span><span class="tag">LaTeX</span></div></section>
+      <section class="section cv-skills">
+        <h2>专业技能</h2>
+        <div class="cv-skill-groups">
+          <section class="cv-skill-group">
+            <h3>数字电路与芯片设计</h3>
+            <ul class="cv-skill-list">
+              <li><strong>硬件描述语言：</strong>Verilog HDL、SystemVerilog，能够完成模块化 RTL、流水线及可综合逻辑设计。</li>
+              <li><strong>FPGA 与 SoC：</strong>熟悉 FPGA 开发、软核 SoC 集成、片上总线与外设数据通路设计。</li>
+              <li><strong>数字芯片流程：</strong>掌握从 RTL 仿真、逻辑综合到布局布线及时序分析的基本流程。</li>
+            </ul>
+          </section>
+          <section class="cv-skill-group">
+            <h3>软件与智能工具</h3>
+            <ul class="cv-skill-list">
+              <li><strong>编程与文档：</strong>Python、C/C++、LaTeX，能够编写自动化脚本与工程文档。</li>
+              <li><strong>AI for EDA：</strong>关注机器学习辅助设计空间探索、流程自动化与结果分析。</li>
+              <li><strong>LLM Agent：</strong>能够围绕工程任务搭建工具调用、任务分解与自动化工作流。</li>
+            </ul>
+          </section>
+          <section class="cv-skill-group">
+            <h3>系统与算法实现</h3>
+            <ul class="cv-skill-list">
+              <li><strong>加速与通信：</strong>定点 1D-CNN 加速、DMA、外部存储器、UART 与以太网数据链路。</li>
+              <li><strong>信号与图像：</strong>硬件图像处理流水线、Sigma-Delta 调制与 DAC 控制。</li>
+            </ul>
+          </section>
+        </div>
+      </section>
 
       <section class="section cv-projects">
         <h2>主要项目</h2>
-        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/la32r_soc" target="_blank" rel="noopener noreferrer">基于 LA32R 软核的芯片全流程设计</a></p><span class="date">2026.8</span></div><p class="organization">Verilog / FPGA / 1D-CNN / DMA</p><p>集成定点 1D-CNN 加速器、DMA、外部存储器与 UART/以太网数据链路，获集创赛全国二等奖。</p></div>
-        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/SigmaOfTy/Micro-ring-Wavelength-Locker" target="_blank" rel="noopener noreferrer">微环调制器波长调节驱动器设计</a></p><span class="date">2026.5</span></div><p class="organization">国家级大学生创新创业训练项目</p><p>利用 Sigma-Delta 调制器与 4-bit DAC，实现微环谐振波长的高精度调节与控制。</p></div>
-        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/ti60f225-image-processing-fpga" target="_blank" rel="noopener noreferrer">Efinix Ti60F225 FPGA 图像处理系统</a></p><span class="date">2025.11</span></div><p class="organization">SystemVerilog / FPGA / Image Processing</p><p>完成模块化 RTL、硬件流水线与图像数据通路设计，获全国大学生嵌入式芯片与系统设计竞赛国家三等奖。</p></div>
+        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/la32r_soc" target="_blank" rel="noopener noreferrer">基于 LA32R 软核的芯片全流程设计</a></p><span class="date">2026.8</span></div><p class="organization">Verilog / FPGA / 1D-CNN / DMA</p><ul class="cv-project-points"><li>完成 LA32R 软核 SoC 的模块化 RTL 集成，接入定点 1D-CNN 加速器、DMA 与外部存储器。</li><li>搭建 UART/以太网数据链路并完成 FPGA 验证，项目获第十届集创赛全国二等奖。</li></ul></div>
+        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/SigmaOfTy/Micro-ring-Wavelength-Locker" target="_blank" rel="noopener noreferrer">微环调制器波长调节驱动器设计</a></p><span class="date">2026.5</span></div><p class="organization">国家级大学生创新创业训练项目</p><ul class="cv-project-points"><li>设计 Sigma-Delta 调制器与 4-bit DAC 驱动链路，实现微环谐振波长的高精度调节。</li><li>完成数字控制方案的 RTL 实现与系统验证，项目入选国家级大学生创新创业训练计划。</li></ul></div>
+        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/ti60f225-image-processing-fpga" target="_blank" rel="noopener noreferrer">Efinix Ti60F225 FPGA 图像处理系统</a></p><span class="date">2025.11</span></div><p class="organization">SystemVerilog / FPGA / Image Processing</p><ul class="cv-project-points"><li>基于 Efinix Ti60F225 完成模块化 SystemVerilog RTL、硬件流水线与图像数据通路设计。</li><li>完成 FPGA 端功能验证和系统联调，项目获嵌入式芯片与系统设计竞赛国家三等奖。</li></ul></div>
       </section>
     </div>
   </main>
 
   <footer class="site-footer"><div>© 2026 叶煊喆</div><div class="visitor-stats" id="busuanzi_container_site_pv" style="display:none;">累计访问 <span id="busuanzi_value_site_pv"></span> 次 · 累计访客 <span id="busuanzi_value_site_uv"></span> 人</div></footer>
-  <script src="/assets/js/main.js?v=20260925-cv-education"></script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/assets/js/main.js?v=20260925-cv-skills"></script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>

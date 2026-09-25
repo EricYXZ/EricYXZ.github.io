@@ -10,7 +10,7 @@
   <link rel="alternate" hreflang="en" href="https://ericyxz.github.io/en/cv/">
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20260925-cv-education">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20260925-cv-skills">
 </head>
 <body class="english-page cv-page">
   <header class="site-header"><div class="nav-wrap"><a class="brand" href="/en/">Eric Ye</a><button class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav" aria-label="Main navigation"><a href="/en/">Home</a><a class="active" href="/en/cv/">CV</a><a href="/en/projects/">Projects</a><a href="/en/publications/">Publications</a><a href="/en/gallery/">Gallery</a></nav><div class="language-switch" aria-label="Language"><a href="/cv/" lang="zh-CN" hreflang="zh-CN">CH</a><span aria-hidden="true">/</span><span class="active" aria-current="page">EN</span></div><button class="theme-toggle" aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></header>
@@ -52,18 +52,45 @@
         </ul>
       </section>
 
-      <section class="section cv-skills"><h2>Technical Skills</h2><div class="tags"><span class="tag">Verilog HDL</span><span class="tag">FPGA</span><span class="tag">Python</span><span class="tag">C/C++</span><span class="tag">LaTeX</span></div></section>
+      <section class="section cv-skills">
+        <h2>Technical Skills</h2>
+        <div class="cv-skill-groups">
+          <section class="cv-skill-group">
+            <h3>Digital Circuit and IC Design</h3>
+            <ul class="cv-skill-list">
+              <li><strong>Hardware Description Languages:</strong> Verilog HDL and SystemVerilog for modular RTL, pipelined, and synthesizable logic design.</li>
+              <li><strong>FPGA and SoC:</strong> FPGA development, soft-core SoC integration, on-chip buses, and peripheral data paths.</li>
+              <li><strong>Digital IC Flow:</strong> RTL simulation, logic synthesis, place and route, and timing analysis.</li>
+            </ul>
+          </section>
+          <section class="cv-skill-group">
+            <h3>Software and Intelligent Tools</h3>
+            <ul class="cv-skill-list">
+              <li><strong>Programming and Documentation:</strong> Python, C/C++, and LaTeX for automation scripts and engineering documentation.</li>
+              <li><strong>AI for EDA:</strong> Machine-learning-assisted design-space exploration, workflow automation, and result analysis.</li>
+              <li><strong>LLM Agents:</strong> Tool use, task decomposition, and automated workflows for engineering tasks.</li>
+            </ul>
+          </section>
+          <section class="cv-skill-group">
+            <h3>System and Algorithm Implementation</h3>
+            <ul class="cv-skill-list">
+              <li><strong>Acceleration and Connectivity:</strong> Fixed-point 1D-CNN acceleration, DMA, external memory, UART, and Ethernet data paths.</li>
+              <li><strong>Signal and Image Processing:</strong> Hardware image-processing pipelines, sigma-delta modulation, and DAC control.</li>
+            </ul>
+          </section>
+        </div>
+      </section>
 
       <section class="section cv-projects">
         <h2>Selected Projects</h2>
-        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/la32r_soc" target="_blank" rel="noopener noreferrer">End-to-End Chip Design with an LA32R Soft Core</a></p><span class="date">Aug. 2026</span></div><p class="organization">Verilog / FPGA / 1D-CNN / DMA</p><p>Integrated a fixed-point 1D-CNN accelerator, DMA, external memory, and UART/Ethernet data paths; awarded a national second prize.</p></div>
-        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/SigmaOfTy/Micro-ring-Wavelength-Locker" target="_blank" rel="noopener noreferrer">Wavelength-Tuning Driver for a Microring Modulator</a></p><span class="date">May 2026</span></div><p class="organization">National Undergraduate Innovation Project</p><p>Used a sigma-delta modulator and a 4-bit DAC for precise resonance-wavelength tuning and control.</p></div>
-        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/ti60f225-image-processing-fpga" target="_blank" rel="noopener noreferrer">FPGA Image-Processing System on Efinix Ti60F225</a></p><span class="date">Nov. 2025</span></div><p class="organization">SystemVerilog / FPGA / Image Processing</p><p>Implemented modular RTL, pipelined hardware, and an image data path; awarded a national third prize.</p></div>
+        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/la32r_soc" target="_blank" rel="noopener noreferrer">End-to-End Chip Design with an LA32R Soft Core</a></p><span class="date">Aug. 2026</span></div><p class="organization">Verilog / FPGA / 1D-CNN / DMA</p><ul class="cv-project-points"><li>Integrated modular RTL around an LA32R soft-core SoC with a fixed-point 1D-CNN accelerator, DMA, and external memory.</li><li>Built UART and Ethernet data paths and completed FPGA verification; the project received a national second prize.</li></ul></div>
+        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/SigmaOfTy/Micro-ring-Wavelength-Locker" target="_blank" rel="noopener noreferrer">Wavelength-Tuning Driver for a Microring Modulator</a></p><span class="date">May 2026</span></div><p class="organization">National Undergraduate Innovation Project</p><ul class="cv-project-points"><li>Designed a sigma-delta modulator and 4-bit DAC driver chain for precise microring resonance-wavelength tuning.</li><li>Implemented and verified the digital control RTL for a National Undergraduate Innovation and Entrepreneurship Training Project.</li></ul></div>
+        <div class="entry"><div class="entry-header"><p class="entry-title"><a href="https://github.com/EricYXZ/ti60f225-image-processing-fpga" target="_blank" rel="noopener noreferrer">FPGA Image-Processing System on Efinix Ti60F225</a></p><span class="date">Nov. 2025</span></div><p class="organization">SystemVerilog / FPGA / Image Processing</p><ul class="cv-project-points"><li>Developed modular SystemVerilog RTL, hardware pipelines, and an image data path on the Efinix Ti60F225.</li><li>Completed FPGA functional verification and system integration; the project received a national third prize.</li></ul></div>
       </section>
     </div>
   </main>
 
   <footer class="site-footer"><div>© 2026 Eric Ye</div><div class="visitor-stats" id="busuanzi_container_site_pv" style="display:none;"><span id="busuanzi_value_site_pv"></span> page views · <span id="busuanzi_value_site_uv"></span> visitors</div></footer>
-  <script src="/assets/js/main.js?v=20260925-cv-education"></script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/assets/js/main.js?v=20260925-cv-skills"></script><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
