@@ -2528,6 +2528,42 @@ body {
   line-height: 1.9;
 }
 
+.home-honors-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-honors-list li {
+  min-width: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-honors-list .honor-name {
+  display: block;
+  color: var(--ink);
+  font-weight: 650;
+  line-height: 1.5;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.home-honors-list a.honor-name:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.home-honors-list .honor-result {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .academic-home-content .section {
   margin-top: 46px;
 }
@@ -2588,6 +2624,10 @@ body {
 }
 
 @media (max-width: 720px) {
+  .home-honors-list {
+    grid-template-columns: 1fr;
+  }
+
   .academic-home-layout {
     grid-template-columns: 1fr;
     gap: 42px;
@@ -2768,6 +2808,11 @@ body {
 .english-home .profile-affiliation,
 .english-home .profile-facts dd {
   font-size: 15px;
+}
+
+.english-home .affiliation-line {
+  font-size: 13px;
+  white-space: nowrap;
 }
 
 .english-home .academic-home-content .lead {
