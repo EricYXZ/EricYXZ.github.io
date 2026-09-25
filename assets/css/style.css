@@ -2558,6 +2558,11 @@ body {
   display: none;
 }
 
+.academic-home-content .home-honors-list li {
+  transform: translateY(var(--honors-overscroll, 0px));
+  will-change: transform;
+}
+
 .home-honors-list li {
   display: flex;
   align-items: baseline;

@@ -364,17 +364,49 @@
     return rawDelta;
   };
 
-  const addMomentumScroller = ({ element, axis, getLoopSize, getStepSize }) => {
+  const addMomentumScroller = ({ element, axis, getLoopSize, getStepSize, elastic }) => {
     if (!element) return;
 
     let velocity = 0;
     let animationFrame = 0;
     let wheelAccumulator = 0;
     let wheelResetTimer = 0;
+    let overscroll = 0;
+    let overscrollVelocity = 0;
+    let bounceFrame = 0;
     const friction = 0.94;
     const wheelThreshold = 80;
     const maxVelocity = 48;
+    const maxOverscroll = 34;
     const positionKey = axis === 'x' ? 'scrollLeft' : 'scrollTop';
+
+    const renderOverscroll = () => {
+      if (!elastic) return;
+      element.style.setProperty('--honors-overscroll', `${overscroll.toFixed(2)}px`);
+    };
+
+    const animateBounce = () => {
+      overscrollVelocity += -overscroll * 0.12;
+      overscrollVelocity *= 0.78;
+      overscroll += overscrollVelocity;
+      overscroll = Math.max(-maxOverscroll, Math.min(maxOverscroll, overscroll));
+      renderOverscroll();
+
+      if (Math.abs(overscroll) < 0.08 && Math.abs(overscrollVelocity) < 0.08) {
+        overscroll = 0;
+        overscrollVelocity = 0;
+        renderOverscroll();
+        bounceFrame = 0;
+        return;
+      }
+      bounceFrame = requestAnimationFrame(animateBounce);
+    };
+
+    const kickBounce = (delta) => {
+      if (!elastic || reduceMotion) return;
+      overscrollVelocity += Math.max(-12, Math.min(12, -delta * 0.09));
+      if (!bounceFrame) bounceFrame = requestAnimationFrame(animateBounce);
+    };
 
     const stop = () => {
       velocity = 0;
@@ -410,6 +442,7 @@
       velocity *= friction;
 
       if (hitBoundary || Math.abs(velocity) < 0.08) {
+        if (hitBoundary) kickBounce(velocity * 12);
         stop();
         return;
       }
@@ -438,6 +471,10 @@
         const atEnd = element[positionKey] >= maxPosition - 1 && delta > 0;
         if (atStart || atEnd) {
           stop();
+          if (elastic && !reduceMotion) {
+            event.preventDefault();
+            kickBounce(delta);
+          }
           return;
         }
       }
@@ -478,6 +515,7 @@
     addMomentumScroller({
       element: list,
       axis: 'y',
+      elastic: true,
       getStepSize: () => list.children.length ? list.scrollHeight / list.children.length : 54
     });
   });
