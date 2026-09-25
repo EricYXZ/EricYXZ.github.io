@@ -2535,6 +2535,19 @@ body {
   list-style: none;
 }
 
+.academic-home-content .home-honors-list {
+  max-height: 270px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: 18px;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+  scrollbar-width: none;
+}
+
+.academic-home-content .home-honors-list::-webkit-scrollbar {
+  display: none;
+}
+
 .home-honors-list li {
   display: flex;
   align-items: baseline;
@@ -2975,22 +2988,24 @@ body {
 
 .snapshot-marquee {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: auto;
+  scrollbar-width: none;
   margin-top: 18px;
   padding: 5px 0;
   mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.snapshot-marquee::-webkit-scrollbar {
+  display: none;
 }
 
 .snapshot-track {
   width: max-content;
   display: flex;
   gap: 18px;
-  animation: snapshot-scroll 30s linear infinite;
-  will-change: transform;
-}
-
-.snapshot-marquee:hover .snapshot-track {
-  animation-play-state: paused;
 }
 
 .snapshot-card {
@@ -3001,15 +3016,11 @@ body {
   border-radius: 12px;
   background: linear-gradient(145deg, var(--paper), var(--wash));
   box-shadow: var(--shadow-soft);
+  scroll-snap-align: start;
 }
 
 .snapshot-card--wide {
   width: 300px;
-}
-
-@keyframes snapshot-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 9px)); }
 }
 
 /* ===== Project categories ===== */
@@ -3018,10 +3029,10 @@ body {
 }
 
 .project-section--research {
-  padding: 26px 28px 2px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.055), rgba(14, 165, 233, 0.025));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .project-section--engineering {
@@ -3248,8 +3259,7 @@ body {
   margin-bottom: 0;
 }
 
-:root[data-theme="dark"] .cv-hero,
-:root[data-theme="dark"] .project-section--research {
+:root[data-theme="dark"] .cv-hero {
   background: rgba(255, 255, 255, 0.035);
 }
 
@@ -3300,17 +3310,12 @@ body {
   }
 
   .project-section--research {
-    padding: 22px 18px 2px;
+    padding: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .snapshot-marquee {
-    overflow-x: auto;
     mask-image: none;
-  }
-
-  .snapshot-track {
-    animation: none;
   }
 }

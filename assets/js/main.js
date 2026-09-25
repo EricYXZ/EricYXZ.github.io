@@ -350,3 +350,39 @@
       : items.length + ' 张';
   }
 })();
+
+// ===== Manual looping snapshot strip =====
+(function () {
+  const marquees = document.querySelectorAll('.snapshot-marquee');
+  if (!marquees.length) return;
+
+  marquees.forEach((marquee) => {
+    const track = marquee.querySelector('.snapshot-track');
+    if (!track) return;
+
+    const moveBy = (delta) => {
+      const cycleWidth = track.scrollWidth / 2;
+      if (!cycleWidth) return;
+
+      let next = marquee.scrollLeft + delta;
+      while (next >= cycleWidth) next -= cycleWidth;
+      while (next < 0) next += cycleWidth;
+      marquee.scrollLeft = next;
+    };
+
+    marquee.addEventListener('wheel', (event) => {
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY)
+        ? event.deltaX
+        : event.deltaY;
+      if (!delta) return;
+      event.preventDefault();
+      moveBy(delta);
+    }, { passive: false });
+
+    marquee.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      moveBy(event.key === 'ArrowLeft' ? -180 : 180);
+    });
+  });
+})();
