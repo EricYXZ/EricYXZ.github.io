@@ -364,13 +364,15 @@
     return rawDelta;
   };
 
-  const addMomentumScroller = ({ element, axis, getLoopSize }) => {
+  const addMomentumScroller = ({ element, axis, getLoopSize, getStepSize }) => {
     if (!element) return;
 
     let velocity = 0;
     let animationFrame = 0;
-    const friction = 0.9;
-    const impulse = 0.16;
+    let wheelAccumulator = 0;
+    let wheelResetTimer = 0;
+    const friction = 0.94;
+    const wheelThreshold = 80;
     const maxVelocity = 48;
     const positionKey = axis === 'x' ? 'scrollLeft' : 'scrollTop';
 
@@ -398,7 +400,13 @@
     const animate = () => {
       const current = element[positionKey];
       const next = setPosition(current + velocity);
-      const hitBoundary = !getLoopSize && next === current && Math.abs(velocity) > 0;
+      const maxPosition = axis === 'x'
+        ? element.scrollWidth - element.clientWidth
+        : element.scrollHeight - element.clientHeight;
+      const hitBoundary = !getLoopSize && (
+        (next <= 0 && velocity < 0) ||
+        (next >= maxPosition - 1 && velocity > 0)
+      );
       velocity *= friction;
 
       if (hitBoundary || Math.abs(velocity) < 0.08) {
@@ -408,12 +416,13 @@
       animationFrame = requestAnimationFrame(animate);
     };
 
-    const push = (delta) => {
+    const push = (distance) => {
       if (reduceMotion) {
-        setPosition(element[positionKey] + delta);
+        setPosition(element[positionKey] + distance);
         return;
       }
-      velocity = Math.max(-maxVelocity, Math.min(maxVelocity, velocity + delta * impulse));
+      const initialVelocity = distance * (1 - friction);
+      velocity = Math.max(-maxVelocity, Math.min(maxVelocity, velocity + initialVelocity));
       if (!animationFrame) animationFrame = requestAnimationFrame(animate);
     };
 
@@ -434,7 +443,24 @@
       }
 
       event.preventDefault();
-      push(delta);
+      clearTimeout(wheelResetTimer);
+      wheelResetTimer = setTimeout(() => { wheelAccumulator = 0; }, 140);
+
+      let direction = Math.sign(delta);
+      let steps = 0;
+      if (Math.abs(delta) >= wheelThreshold) {
+        steps = Math.max(1, Math.round(Math.abs(delta) / 120));
+        wheelAccumulator = 0;
+      } else {
+        wheelAccumulator += delta;
+        steps = Math.trunc(Math.abs(wheelAccumulator) / wheelThreshold);
+        if (!steps) return;
+        direction = Math.sign(wheelAccumulator);
+        wheelAccumulator -= direction * steps * wheelThreshold;
+      }
+
+      const stepSize = getStepSize ? getStepSize() : 120;
+      push(direction * stepSize * Math.min(steps, 3));
     }, { passive: false });
 
     element.addEventListener('keydown', (event) => {
@@ -442,13 +468,18 @@
       const forward = axis === 'x' ? event.key === 'ArrowRight' : event.key === 'ArrowDown';
       if (!backward && !forward) return;
       event.preventDefault();
-      push(backward ? -180 : 180);
+      const stepSize = getStepSize ? getStepSize() : 120;
+      push(backward ? -stepSize : stepSize);
     });
   };
 
   document.querySelectorAll('.academic-home-content .home-honors-list').forEach((list) => {
     if (!list.hasAttribute('tabindex')) list.tabIndex = 0;
-    addMomentumScroller({ element: list, axis: 'y' });
+    addMomentumScroller({
+      element: list,
+      axis: 'y',
+      getStepSize: () => list.children.length ? list.scrollHeight / list.children.length : 54
+    });
   });
 
   document.querySelectorAll('.snapshot-marquee').forEach((marquee) => {
@@ -459,6 +490,12 @@
     addMomentumScroller({
       element: marquee,
       axis: 'x',
+      getStepSize: () => {
+        const itemCount = Math.floor(cards.length / 2);
+        const firstClone = cards[itemCount];
+        const cycleWidth = firstClone ? firstClone.offsetLeft - cards[0].offsetLeft : 0;
+        return itemCount && cycleWidth ? cycleWidth / itemCount : 240;
+      },
       getLoopSize: () => {
         const firstClone = cards[Math.floor(cards.length / 2)];
         return firstClone ? firstClone.offsetLeft - cards[0].offsetLeft : 0;
