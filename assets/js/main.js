@@ -103,11 +103,16 @@
   const container = document.getElementById('giscus-container');
   if (!container) return;
 
-  function getGiscusTheme() {
+  function getActiveTheme() {
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') return 'dark';
     if (saved === 'light') return 'light';
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function getGiscusTheme(theme) {
+    const fileName = theme === 'dark' ? 'giscus-dark.css' : 'giscus-light.css';
+    return `https://ericyxz.github.io/assets/css/${fileName}?v=20260925`;
   }
 
   function loadGiscus(theme) {
@@ -126,7 +131,7 @@
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '1');
     script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', theme);
+    script.setAttribute('data-theme', getGiscusTheme(theme));
     const pageLanguage = document.documentElement.lang || 'zh-CN';
     script.setAttribute('data-lang', pageLanguage.startsWith('en') ? 'en' : 'zh-CN');
     script.setAttribute('crossorigin', 'anonymous');
@@ -135,7 +140,7 @@
   }
 
   // Initial load
-  loadGiscus(getGiscusTheme());
+  loadGiscus(getActiveTheme());
 
   // Expose reload function for theme toggle
   window.reloadGiscus = function (theme) {

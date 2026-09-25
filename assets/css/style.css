@@ -2881,15 +2881,30 @@ body {
   font-size: 16px;
 }
 
-.english-home .guestbook-intro {
+.guestbook-intro {
   margin-bottom: 24px;
   color: var(--muted);
 }
 
-.english-home .guestbook-note {
+.guestbook-note {
   margin-top: 12px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.giscus-shell {
+  min-height: 180px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.giscus-shell .giscus,
+.giscus-shell .giscus-frame {
+  width: 100%;
 }
 
 @media (max-width: 720px) {
@@ -3193,9 +3208,10 @@ body {
 
 .cv-skill-group h3 {
   margin: 0 0 7px;
-  color: var(--muted);
+  color: var(--ink);
+  font-family: inherit;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.45;
 }
 
@@ -3408,6 +3424,10 @@ body {
 @media (max-width: 720px) {
   body {
     padding-top: 62px;
+  }
+
+  .giscus-shell {
+    padding: 14px;
   }
 
   .nav-wrap {

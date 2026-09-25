@@ -1,0 +1,108 @@
+/*! Custom Giscus theme for Eric Ye's homepage. */
+main {
+  --color-prettylights-syntax-comment: #607086;
+  --color-prettylights-syntax-constant: #123a78;
+  --color-prettylights-syntax-entity: #6f42c1;
+  --color-prettylights-syntax-storage-modifier-import: #203149;
+  --color-prettylights-syntax-entity-tag: #0f766e;
+  --color-prettylights-syntax-keyword: #b42318;
+  --color-prettylights-syntax-string: #123a78;
+  --color-prettylights-syntax-variable: #9a6700;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #b42318;
+  --color-prettylights-syntax-invalid-illegal-text: #fff;
+  --color-prettylights-syntax-invalid-illegal-bg: #b42318;
+  --color-prettylights-syntax-carriage-return-text: #fff;
+  --color-prettylights-syntax-carriage-return-bg: #b42318;
+  --color-prettylights-syntax-string-regexp: #0f766e;
+  --color-prettylights-syntax-markup-list: #9a6700;
+  --color-prettylights-syntax-markup-heading: #123a78;
+  --color-prettylights-syntax-markup-italic: #203149;
+  --color-prettylights-syntax-markup-bold: #0b1628;
+  --color-prettylights-syntax-markup-deleted-text: #b42318;
+  --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-syntax-markup-inserted-text: #0f766e;
+  --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-syntax-markup-changed-text: #9a6700;
+  --color-prettylights-syntax-markup-changed-bg: #fff1d6;
+  --color-prettylights-syntax-markup-ignored-text: #607086;
+  --color-prettylights-syntax-markup-ignored-bg: #123a78;
+  --color-prettylights-syntax-meta-diff-range: #6f42c1;
+  --color-prettylights-syntax-brackethighlighter-angle: #607086;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #8291a5;
+  --color-prettylights-syntax-constant-other-reference-link: #123a78;
+  --color-btn-text: #203149;
+  --color-btn-bg: #f4f8fd;
+  --color-btn-border: #d7e3f1;
+  --color-btn-shadow: 0 1px 2px rgb(9 33 72 / 8%);
+  --color-btn-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 25%);
+  --color-btn-hover-bg: #eaf2fb;
+  --color-btn-hover-border: #b9cce3;
+  --color-btn-active-bg: #e2edf8;
+  --color-btn-active-border: #a8bfd9;
+  --color-btn-selected-bg: #eaf2fb;
+  --color-btn-primary-text: #fff;
+  --color-btn-primary-bg: #2563eb;
+  --color-btn-primary-border: #2563eb;
+  --color-btn-primary-shadow: 0 2px 6px rgb(37 99 235 / 20%);
+  --color-btn-primary-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 14%);
+  --color-btn-primary-hover-bg: #1d4ed8;
+  --color-btn-primary-hover-border: #1d4ed8;
+  --color-btn-primary-selected-bg: #1e40af;
+  --color-btn-primary-selected-shadow: inset 0 1px 2px rgb(11 22 40 / 18%);
+  --color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
+  --color-btn-primary-disabled-bg: #93b4f8;
+  --color-btn-primary-disabled-border: #93b4f8;
+  --color-action-list-item-default-hover-bg: rgb(215 227 241 / 38%);
+  --color-segmented-control-bg: #edf4fb;
+  --color-segmented-control-button-bg: #fff;
+  --color-segmented-control-button-selected-border: #9fb5cf;
+  --color-fg-default: #203149;
+  --color-fg-muted: #607086;
+  --color-fg-subtle: #8291a5;
+  --color-canvas-default: #fff;
+  --color-canvas-overlay: #fff;
+  --color-canvas-inset: #f4f8fd;
+  --color-canvas-subtle: #f4f8fd;
+  --color-border-default: #d7e3f1;
+  --color-border-muted: #e5edf6;
+  --color-neutral-muted: rgb(96 112 134 / 14%);
+  --color-accent-fg: #2563eb;
+  --color-accent-emphasis: #2563eb;
+  --color-accent-muted: rgb(37 99 235 / 30%);
+  --color-accent-subtle: #edf5ff;
+  --color-success-fg: #0f766e;
+  --color-attention-fg: #9a6700;
+  --color-attention-muted: rgb(240 180 41 / 35%);
+  --color-attention-subtle: #fff8df;
+  --color-danger-fg: #b42318;
+  --color-danger-muted: rgb(180 35 24 / 30%);
+  --color-danger-subtle: #ffebe9;
+  --color-primer-shadow-inset: inset 0 1px 0 rgb(215 227 241 / 20%);
+  --color-scale-gray-1: #eaf2fb;
+  --color-scale-blue-1: #cfe2ff;
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+  font-family: "Noto Serif SC", "Songti SC", STSong, SimSun, serif;
+}
+
+.gsc-homepage-bg { background-color: #fff; }
+.gsc-main { color: var(--color-fg-default); }
+.gsc-comment-box,
+.gsc-comment { border: 1px solid var(--color-border-default); border-radius: 8px; overflow: hidden; box-shadow: 0 8px 22px rgb(9 33 72 / 7%); }
+.gsc-comment-box-tabs,
+.gsc-comment-header { background: var(--color-canvas-subtle); }
+.gsc-comment-box-textarea { border-radius: 8px !important; background: #fff; box-shadow: none !important; }
+.gsc-reactions-button,
+.btn,
+.form-control { border-radius: 8px !important; }
+.btn { font-family: inherit; }
+.gsc-timeline { gap: 14px; }
+.gsc-reactions-count { color: var(--color-fg-muted); }
+
+main .pagination-loader-container {
+  background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
+}
+
+main .gsc-loading-image {
+  background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
+}
