@@ -2540,7 +2540,6 @@ body {
   gap: 8px;
   min-width: 0;
   padding: 12px 0;
-  border-bottom: 1px solid var(--line);
   line-height: 1.7;
 }
 
@@ -2553,9 +2552,15 @@ body {
   overflow-wrap: anywhere;
 }
 
+.home-honors-list a.honor-name {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
 .home-honors-list a.honor-name:hover {
   color: var(--ink);
-  text-decoration: underline;
+  text-decoration: none;
+  transform: translateX(2px);
 }
 
 .home-honors-list .honor-result {
