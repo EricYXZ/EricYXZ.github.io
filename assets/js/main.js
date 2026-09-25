@@ -377,7 +377,7 @@
     const friction = 0.94;
     const wheelThreshold = 80;
     const maxVelocity = 48;
-    const maxOverscroll = 34;
+    const maxOverscroll = 64;
     const positionKey = axis === 'x' ? 'scrollLeft' : 'scrollTop';
 
     const renderOverscroll = () => {
@@ -386,7 +386,7 @@
     };
 
     const animateBounce = () => {
-      overscrollVelocity += -overscroll * 0.12;
+      overscrollVelocity += -overscroll * 0.012;
       overscrollVelocity *= 0.78;
       overscroll += overscrollVelocity;
       overscroll = Math.max(-maxOverscroll, Math.min(maxOverscroll, overscroll));
@@ -404,7 +404,10 @@
 
     const kickBounce = (delta) => {
       if (!elastic || reduceMotion) return;
-      overscrollVelocity += Math.max(-12, Math.min(12, -delta * 0.09));
+      const projectedStretch = Math.abs(overscroll) + Math.abs(overscrollVelocity) * 1.6;
+      const rubberBandResistance = Math.max(0.24, 1 - projectedStretch / maxOverscroll);
+      const impulse = Math.max(-20, Math.min(20, -delta * 0.17));
+      overscrollVelocity += impulse * rubberBandResistance;
       if (!bounceFrame) bounceFrame = requestAnimationFrame(animateBounce);
     };
 
