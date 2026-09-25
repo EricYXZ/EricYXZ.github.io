@@ -2535,6 +2535,9 @@ body {
 }
 
 .home-honors-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   min-width: 0;
   padding: 12px 0;
   border-bottom: 1px solid var(--line);
@@ -2542,7 +2545,8 @@ body {
 }
 
 .home-honors-list .honor-name {
-  display: inline;
+  flex: 0 1 auto;
+  min-width: 0;
   color: var(--ink);
   font-weight: 650;
   text-decoration: none;
@@ -2555,14 +2559,14 @@ body {
 }
 
 .home-honors-list .honor-result {
-  display: inline;
+  flex: 0 0 auto;
   color: var(--muted);
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .home-honors-list .honor-result::before {
-  content: " · ";
-  white-space: pre;
+  content: "· ";
 }
 
 .academic-home-content .section {
@@ -2625,6 +2629,19 @@ body {
 }
 
 @media (max-width: 720px) {
+  .home-honors-list li {
+    display: block;
+  }
+
+  .home-honors-list .honor-result {
+    white-space: normal;
+  }
+
+  .home-honors-list .honor-result::before {
+    content: " · ";
+    white-space: pre;
+  }
+
   .academic-home-layout {
     grid-template-columns: 1fr;
     gap: 42px;
