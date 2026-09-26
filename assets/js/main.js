@@ -104,15 +104,12 @@
   if (!container) return;
 
   function getActiveTheme() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') return 'dark';
-    if (saved === 'light') return 'light';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
 
   function getGiscusTheme(theme) {
     const fileName = theme === 'dark' ? 'giscus-dark.css' : 'giscus-light.css';
-    return `https://ericyxz.github.io/assets/css/${fileName}?v=20260925-ui2`;
+    return `https://ericyxz.github.io/assets/css/${fileName}?v=20260926-b1`;
   }
 
   function loadGiscus(theme) {
@@ -157,24 +154,26 @@
   const iconSun = toggle.querySelector('.icon-sun');
   const iconMoon = toggle.querySelector('.icon-moon');
 
-  // Load saved preference
-  const saved = localStorage.getItem('theme');
-  if (saved) {
-    html.setAttribute('data-theme', saved);
-  }
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  let explicitTheme = false;
+  try { explicitTheme = ['light', 'dark'].includes(localStorage.getItem('theme')); } catch (_) {}
   updateIcon();
 
-  toggle.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
     updateIcon();
+    if (typeof window.reloadGiscus === 'function') window.reloadGiscus(theme);
+  }
 
-    // Reload Giscus with new theme
-    if (typeof window.reloadGiscus === 'function') {
-      window.reloadGiscus(next);
-    }
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    explicitTheme = true;
+    try { localStorage.setItem('theme', next); } catch (_) {}
+    applyTheme(next);
+  });
+
+  systemTheme.addEventListener('change', (event) => {
+    if (!explicitTheme) applyTheme(event.matches ? 'dark' : 'light');
   });
 
   function updateIcon() {

@@ -24,7 +24,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <script>
+    // Resolve the theme before painting the page.
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('theme'); } catch (_) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="/assets/css/style.css?v=20260926-layout">
+  <link rel="stylesheet" href="/assets/css/theme-b.css?v=20260926-b1">
 </head>
 
 <body>
@@ -225,7 +237,7 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=20260925-ui2"></script>
+  <script src="/assets/js/main.js?v=20260926-b1"></script>
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>

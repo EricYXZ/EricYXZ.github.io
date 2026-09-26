@@ -1,0 +1,158 @@
+/* Selected design B: cool white and slate, shared by both languages. */
+
+:root, :root[data-theme="light"] { --shadow:none; --shadow-soft:none; }
+body { background:var(--paper); -webkit-font-smoothing:antialiased; }
+.nav-wrap { box-shadow:none; backdrop-filter:none; background:var(--paper); min-height:76px; padding-inline:max(32px,calc((100vw - 1160px)/2)); }
+body { padding-top:76px; }
+.site-header { border:0; }
+.brand { font-size:20px; letter-spacing:2px; }
+.nav { gap:18px; }
+.nav a { font-size:14px; padding:8px 2px; }
+.nav a.active { box-shadow:inset 0 -1px var(--blue); }
+.theme-toggle { border:0; background:transparent; }
+.container { width:min(1160px,calc(100% - 64px)); }
+.academic-home-layout { padding-top:64px; grid-template-columns:250px minmax(0,1fr); gap:76px; }
+.academic-profile { top:110px; padding-right:0; border:0; }
+.profile-avatar { box-shadow:none; border:0; width:142px; height:142px; }
+.academic-profile h1 { font-size:36px; letter-spacing:3px; margin:26px 0 14px; font-weight:650; }
+.profile-role { font-size:13px; font-weight:500; line-height:1.9; }
+.profile-affiliation { font-size:12px; line-height:2; margin-top:9px; }
+.profile-facts { margin-top:28px; }
+.profile-facts > div { padding-top:20px; }
+.profile-facts dt { font-size:11px; letter-spacing:1px; }
+.profile-facts dd { margin-top:9px; font-size:13px; line-height:1.9; }
+.profile-contact { margin-top:25px; gap:14px; }
+.profile-contact-item { font-size:12px; color:var(--muted); }
+.profile-contact-item svg { width:14px; height:14px; flex-basis:14px; stroke-width:1.4; }
+.section-heading h2,.section h2 { font-size:24px; font-weight:600; letter-spacing:1px; line-height:1.5; }
+.section-heading h2::after,.section h2::after { height:1px; margin-top:10px; background:var(--blue); opacity:.7; }
+.academic-home-content .lead { font-size:16px; line-height:2.15; text-align:justify; }
+.academic-home-content .home-about .section-heading { margin-bottom:25px; }
+.academic-home-content .home-section { padding-bottom:36px; }
+.academic-home-content .section { margin-top:34px; }
+.section-heading { margin-bottom:20px; }
+.empty-note { border:0; padding:0; font-size:14px; line-height:1.9; color:var(--muted); }
+.empty-note:hover { background:transparent; }
+.home-honors-list .honor-name { font-size:14px; font-weight:500; }
+.home-honors-list .honor-result { font-size:12px; margin-left:auto; }
+.academic-home-content .home-honors-list { max-height:255px; padding-block:12px; }
+.home-honors-list li { padding:12px 0; }
+.academic-home-content .home-card-grid { gap:22px; }
+.academic-home-content .card { min-width:0; padding:18px 0; }
+.card-icon { display:none; }
+.card h3 { font-size:16px; font-weight:600; }
+.card-link { margin-top:14px; color:var(--blue-dark); }
+.card:hover { background:transparent; }
+.snapshot-card { box-shadow:none; background:var(--wash); border-radius:3px; height:160px; }
+.giscus-shell { border:1px solid var(--line); border-radius:3px; background:transparent; box-shadow:none; }
+.site-footer { margin-top:56px; color:var(--muted); font-size:12px; }
+.cv-hero { background:var(--wash); box-shadow:none; border-radius:3px; }
+.cv-avatar { box-shadow:none; }
+@media(max-width:760px) {
+ .container { width:calc(100% - 40px); }
+ .academic-home-layout { grid-template-columns:1fr; gap:36px; padding-top:32px; }
+ .academic-profile { position:static; }
+ .nav { gap:8px; }
+ .nav-wrap { padding-inline:20px; }
+ .academic-home-content .home-card-grid { grid-template-columns:repeat(2,1fr); }
+ .home-honors-list .honor-result { margin-left:0; }
+}
+/* B — cool white, ordered columns */
+:root, :root[data-theme="light"] { --ink:#203345; --text:#536273; --muted:#7a8792; --line:#e2e7eb; --paper:#ffffff; --wash:#f4f6f8; --blue:#41627d; --blue-dark:#36546d; }
+.academic-home-layout { grid-template-columns:248px minmax(0,1fr); gap:62px; }
+.academic-profile { background:var(--wash); padding:28px 22px; border:0; border-radius:4px; }
+.profile-avatar { width:118px; height:118px; }
+.academic-profile h1 { font-size:32px; }
+.profile-role { font-size:12px; }
+.profile-affiliation { font-size:11px; }
+.academic-home-content .home-about .section-heading { margin-bottom:22px; }
+.academic-home-content .section { margin-top:38px; }
+.section-heading { border-bottom:1px solid var(--line); padding-bottom:12px; }
+.section-heading h2::after,.section h2::after { display:none; }
+.section-heading h2 { font-size:22px; }
+.home-about .section-heading h2 { font-size:28px; }
+.academic-home-content .home-section { border:0; padding-bottom:0; }
+.home-honors-list .honor-result { font-variant-numeric:tabular-nums; }
+.card { border-top:0; }
+.academic-home-content .home-card-grid { gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.academic-home-content .card { padding:20px 16px; border-right:1px solid var(--line); }
+.academic-home-content .card:first-child { padding-left:0; }
+.academic-home-content .card:last-child { border-right:0; }
+@media(max-width:760px) { .academic-home-layout { grid-template-columns:1fr; } }
+
+/* Shared finishing rules for the selected B layout. */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:#171c22; --wash:#20272f; --ink:#e0e6eb; --text:#b7c2cc;
+  --muted:#96a3af; --line:#343e49; --blue:#8cabc3; --blue-dark:#abc4d7;
+  --shadow:none; --shadow-soft:none;
+}
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme:dark;
+    --paper:#171c22; --wash:#20272f; --ink:#e0e6eb; --text:#b7c2cc;
+    --muted:#96a3af; --line:#343e49; --blue:#8cabc3; --blue-dark:#abc4d7;
+    --shadow:none; --shadow-soft:none;
+  }
+}
+:root body { background:var(--paper); color:var(--text); }
+:root .cv-hero { background:var(--wash); border:1px solid var(--line); }
+:root .nav-wrap { background:var(--paper); width:100%; }
+:root .lead, :root .entry p, :root .entry li, :root .card p,
+:root .page-intro, :root .feature p { color:var(--text); }
+:root .date, :root .empty-note, :root .organization { color:var(--muted); }
+:root .entry-title, :root .entry-title a { color:var(--ink); }
+:root .text-link, :root .card-link { color:var(--blue-dark); }
+:root .theme-toggle { color:var(--muted); background:transparent; box-shadow:none; }
+:root .theme-toggle:hover { color:var(--ink); background:var(--wash); }
+:root .button.primary { background:var(--blue); color:var(--paper); border-color:var(--blue); box-shadow:none; }
+:root .button.primary:hover { background:var(--blue-dark); border-color:var(--blue-dark); }
+:root .button.secondary { background:transparent; border-color:var(--line); color:var(--ink); }
+:root .back-to-top { background:var(--wash); color:var(--ink); border:1px solid var(--line); box-shadow:none; }
+:root .back-to-top:hover { background:var(--blue); color:var(--paper); }
+:root .empty-note, :root .card:hover { background:transparent; box-shadow:none; }
+:root .tag { color:var(--text); background:var(--wash); border-color:var(--line); }
+:root .tag:hover { color:var(--ink); border-color:var(--blue); }
+:root .photo-card { background:var(--wash); box-shadow:none; }
+:root .giscus-shell { background:transparent; border:0; padding:0; box-shadow:none; }
+.cv-single > .section > h2, .project-section > h2 {
+  display:block; width:100%; border-bottom:1px solid var(--line); padding-bottom:12px;
+  margin-bottom:24px; font-size:22px;
+}
+.cv-skill-group h3 { font-family:inherit; font-size:19px; font-weight:600; }
+.cv-page .cv-honors-list { max-height:255px; padding-block:12px; }
+.cv-hero .page-title { font-size:36px; font-weight:600; }
+.cv-hero { padding:32px; gap:28px; }
+.cv-contact-line { flex-wrap:wrap; }
+.english-home .profile-role { font-size:14px; line-height:1.65; }
+.english-home .profile-affiliation, .english-home .affiliation-line {
+  font-size:12px; line-height:1.75; white-space:normal;
+}
+.english-home .profile-facts dd { font-size:14px; }
+.english-home .profile-contact-item { font-size:13px; }
+.english-home .card h3 { font-size:18px; }
+:root .english-home .home-honors-list .honor-result { font-size:13px; }
+:root .english-home .home-honors-list .honor-name { font-size:15px; }
+@media (max-width:760px) {
+  .academic-home-layout { gap:36px; }
+  .academic-home-content .home-card-grid .card { padding:18px 12px; }
+  .academic-home-content .home-card-grid .card:nth-child(2n) { border-right:0; }
+  .academic-home-content .home-card-grid .card:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+  .academic-home-content .lead { text-align:start; }
+  .cv-hero { padding:24px; }
+  .cv-hero .page-title { font-size:30px; }
+  .cv-skill-group h3 { font-size:18px; }
+}
+@media (max-width:720px) {
+  body { padding-top:62px; }
+  .nav-wrap { min-height:62px; padding:10px 20px; }
+  .nav a { padding:8px 4px; }
+}
+
+@media (max-width:600px) {
+  .cv-hero { grid-template-columns:1fr; gap:20px; }
+  .cv-avatar { width:100px; height:100px; }
+  .cv-hero-copy { min-width:0; }
+  .cv-contact-line { row-gap:10px; }
+}

@@ -30,46 +30,46 @@ main {
   --color-prettylights-syntax-brackethighlighter-angle: #607086;
   --color-prettylights-syntax-sublimelinter-gutter-mark: #8291a5;
   --color-prettylights-syntax-constant-other-reference-link: #123a78;
-  --color-btn-text: #203149;
-  --color-btn-bg: #f4f8fd;
-  --color-btn-border: #d7e3f1;
-  --color-btn-shadow: 0 1px 2px rgb(9 33 72 / 8%);
-  --color-btn-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 25%);
-  --color-btn-hover-bg: #eaf2fb;
-  --color-btn-hover-border: #b9cce3;
-  --color-btn-active-bg: #e2edf8;
-  --color-btn-active-border: #a8bfd9;
-  --color-btn-selected-bg: #eaf2fb;
-  --color-btn-primary-text: #fff;
-  --color-btn-primary-bg: #2563eb;
-  --color-btn-primary-border: #2563eb;
-  --color-btn-primary-shadow: 0 2px 6px rgb(37 99 235 / 20%);
-  --color-btn-primary-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 14%);
-  --color-btn-primary-hover-bg: #1d4ed8;
-  --color-btn-primary-hover-border: #1d4ed8;
-  --color-btn-primary-selected-bg: #1e40af;
-  --color-btn-primary-selected-shadow: inset 0 1px 2px rgb(11 22 40 / 18%);
+  --color-btn-text: #203345;
+  --color-btn-bg: #f4f6f8;
+  --color-btn-border: #e2e7eb;
+  --color-btn-shadow: none;
+  --color-btn-inset-shadow: none;
+  --color-btn-hover-bg: #e2e7eb;
+  --color-btn-hover-border: #6c7b88;
+  --color-btn-active-bg: #e2e7eb;
+  --color-btn-active-border: #6c7b88;
+  --color-btn-selected-bg: #e2e7eb;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #41627d;
+  --color-btn-primary-border: #41627d;
+  --color-btn-primary-shadow: none;
+  --color-btn-primary-inset-shadow: none;
+  --color-btn-primary-hover-bg: #36546d;
+  --color-btn-primary-hover-border: #36546d;
+  --color-btn-primary-selected-bg: #36546d;
+  --color-btn-primary-selected-shadow: none;
   --color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
-  --color-btn-primary-disabled-bg: #93b4f8;
-  --color-btn-primary-disabled-border: #93b4f8;
-  --color-action-list-item-default-hover-bg: rgb(215 227 241 / 38%);
-  --color-segmented-control-bg: #edf4fb;
-  --color-segmented-control-button-bg: #fff;
-  --color-segmented-control-button-selected-border: #9fb5cf;
-  --color-fg-default: #203149;
-  --color-fg-muted: #607086;
-  --color-fg-subtle: #8291a5;
-  --color-canvas-default: #fff;
-  --color-canvas-overlay: #fff;
-  --color-canvas-inset: #f4f8fd;
-  --color-canvas-subtle: #f4f8fd;
-  --color-border-default: #d7e3f1;
-  --color-border-muted: #e5edf6;
+  --color-btn-primary-disabled-bg: #6c7b88;
+  --color-btn-primary-disabled-border: #6c7b88;
+  --color-action-list-item-default-hover-bg: #f4f6f8;
+  --color-segmented-control-bg: #f4f6f8;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-selected-border: #6c7b88;
+  --color-fg-default: #203345;
+  --color-fg-muted: #6c7b88;
+  --color-fg-subtle: #6c7b88;
+  --color-canvas-default: #ffffff;
+  --color-canvas-overlay: #f4f6f8;
+  --color-canvas-inset: #f4f6f8;
+  --color-canvas-subtle: #f4f6f8;
+  --color-border-default: #e2e7eb;
+  --color-border-muted: #e2e7eb;
   --color-neutral-muted: rgb(96 112 134 / 14%);
-  --color-accent-fg: #2563eb;
-  --color-accent-emphasis: #2563eb;
-  --color-accent-muted: rgb(37 99 235 / 30%);
-  --color-accent-subtle: #edf5ff;
+  --color-accent-fg: #41627d;
+  --color-accent-emphasis: #41627d;
+  --color-accent-muted: #e2e7eb;
+  --color-accent-subtle: #f4f6f8;
   --color-success-fg: #0f766e;
   --color-attention-fg: #9a6700;
   --color-attention-muted: rgb(240 180 41 / 35%);
@@ -77,42 +77,42 @@ main {
   --color-danger-fg: #b42318;
   --color-danger-muted: rgb(180 35 24 / 30%);
   --color-danger-subtle: #ffebe9;
-  --color-primer-shadow-inset: inset 0 1px 0 rgb(215 227 241 / 20%);
+  --color-primer-shadow-inset: none;
   --color-scale-gray-1: #eaf2fb;
   --color-scale-blue-1: #cfe2ff;
-  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
-  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+  --color-social-reaction-bg-hover: #e2e7eb;
+  --color-social-reaction-bg-reacted-hover: #e2e7eb;
   font-family: "Noto Serif SC", "Songti SC", STSong, SimSun, serif;
 }
 
-.gsc-homepage-bg { background-color: #fff; }
+.gsc-homepage-bg { background-color: #ffffff; }
 .gsc-main { gap: 24px; color: var(--color-fg-default); }
 .gsc-comments { gap: 18px; }
 .gsc-comment > div,
 .gsc-comment-box:not(.gsc-comment-box-is-reply) {
   border: 1px solid var(--color-border-default) !important;
-  border-radius: 12px !important;
+  border-radius: 4px !important;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 10px 26px rgb(9 33 72 / 9%);
+  box-shadow: none;
 }
 .gsc-comment-header {
   padding: 12px 18px;
   border-bottom: 1px solid var(--color-border-muted);
-  background: linear-gradient(135deg, #edf5ff, #f7fbff);
+  background: var(--color-canvas-subtle);
 }
 .gsc-comment-content { padding: 18px; }
 .gsc-comment-footer { margin: 0 !important; padding: 0 14px 14px; }
 .gsc-reply-box { border-color: var(--color-border-muted); background: var(--color-canvas-subtle); }
-.gsc-comment-box-tabs { border-color: var(--color-border-muted); background: linear-gradient(135deg, #edf5ff, #f7fbff); }
+.gsc-comment-box-tabs { border-color: var(--color-border-muted); background: var(--color-canvas-subtle); }
 .gsc-comment-box-main { margin: 14px; }
-.gsc-comment-box-textarea { border-color: var(--color-border-default); border-radius: 8px 8px 0 0 !important; background: #fff; box-shadow: none !important; }
-.gsc-comment-box-textarea-extras { border-color: var(--color-border-default); border-radius: 0 0 8px 8px !important; background: #f7fbff; }
+.gsc-comment-box-textarea { border-color: var(--color-border-default); border-radius: 4px 4px 0 0 !important; background: #fff; box-shadow: none !important; }
+.gsc-comment-box-textarea-extras { border-color: var(--color-border-default); border-radius: 0 0 4px 4px !important; background: var(--color-canvas-subtle); }
 .gsc-reactions-button,
 .btn,
-.form-control { border-radius: 8px !important; }
+.form-control { border-radius: 4px !important; }
 .btn { font-family: inherit; }
-.btn-primary { box-shadow: 0 5px 14px rgb(37 99 235 / 20%); }
+.btn-primary { box-shadow: none; }
 .gsc-timeline { gap: 18px; }
 .gsc-reactions-count { color: var(--color-fg-muted); }
 
