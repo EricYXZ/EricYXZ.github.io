@@ -2524,6 +2524,14 @@ body {
   padding: 0;
 }
 
+.academic-home-content .home-about {
+  display: block;
+}
+
+.academic-home-content .home-about .section-heading {
+  margin-bottom: 22px;
+}
+
 .academic-home-content .lead {
   font-size: 16px;
   line-height: 1.9;
@@ -3103,10 +3111,6 @@ body {
   box-shadow: var(--shadow-soft);
 }
 
-.cv-hero .section-kicker {
-  margin: 0 0 3px;
-}
-
 .cv-hero .page-title {
   margin-bottom: 2px;
 }
@@ -3137,6 +3141,24 @@ body {
 
 .cv-contact-line a:hover {
   transform: translateX(2px);
+}
+
+.cv-download-button {
+  width: fit-content;
+  min-height: 36px;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 7px 14px;
+}
+
+.cv-download-button svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 .cv-single > .section {
@@ -3354,6 +3376,10 @@ body {
 
   .cv-contact-line {
     grid-column: 1 / -1;
+  }
+
+  .cv-download-button {
+    font-size: 13px;
   }
 
   .cv-education-item {
