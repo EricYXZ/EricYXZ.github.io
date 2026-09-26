@@ -1,6 +1,6 @@
 /* Selected design B: cool white and slate, shared by both languages. */
 
-:root, :root[data-theme="light"] { --shadow:none; --shadow-soft:none; --progress-thickness:2px; }
+:root, :root[data-theme="light"] { --shadow:none; --shadow-soft:none; --progress-thickness:2px; --project-hover-shadow:0 14px 36px rgba(31,51,69,.16); }
 body { background:var(--paper); -webkit-font-smoothing:antialiased; }
 .nav-wrap { box-shadow:none; backdrop-filter:none; background:var(--paper); min-height:76px; padding-inline:max(32px,calc((100vw - 1160px)/2)); }
 body { padding-top:76px; }
@@ -115,14 +115,14 @@ html.theme-transition body *::after {
   color-scheme: dark;
   --paper:#171c22; --wash:#20272f; --ink:#e0e6eb; --text:#b7c2cc;
   --muted:#96a3af; --line:#343e49; --blue:#8cabc3; --blue-dark:#abc4d7;
-  --shadow:none; --shadow-soft:none;
+  --shadow:none; --shadow-soft:none; --project-hover-shadow:0 16px 40px rgba(0,0,0,.34);
 }
 @media (prefers-color-scheme:dark) {
   :root:not([data-theme="light"]) {
     color-scheme:dark;
     --paper:#171c22; --wash:#20272f; --ink:#e0e6eb; --text:#b7c2cc;
     --muted:#96a3af; --line:#343e49; --blue:#8cabc3; --blue-dark:#abc4d7;
-    --shadow:none; --shadow-soft:none;
+    --shadow:none; --shadow-soft:none; --project-hover-shadow:0 16px 40px rgba(0,0,0,.34);
   }
 }
 :root body { background:var(--paper); color:var(--text); }
@@ -178,25 +178,16 @@ html.theme-transition body *::after {
   border-radius:3px;
   background:var(--paper);
   overflow:hidden;
+  transition:box-shadow .28s cubic-bezier(.22, 1, .36, 1);
 }
 .projects-page .entry:last-child { padding-bottom:24px; }
 .projects-page .entry::before { display:none; }
-.projects-page .entry::after {
-  content:"";
-  position:absolute;
-  z-index:3;
-  inset:0;
-  border:var(--progress-thickness) solid transparent;
-  border-radius:3px;
-  pointer-events:none;
-}
 .projects-page .entry:hover {
-  border-color:var(--blue);
+  border-color:var(--line);
   background:var(--paper);
-  box-shadow:none;
+  box-shadow:var(--project-hover-shadow);
   transform:none;
 }
-.projects-page .entry:hover::after { border-color:var(--blue); }
 .projects-page .entry-header {
   display:grid;
   grid-template-columns:minmax(0, 1fr) auto;

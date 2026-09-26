@@ -85,8 +85,21 @@
 
 // ===== Back to Top Button =====
 (function () {
-  const btn = document.querySelector('.back-to-top');
-  if (!btn) return;
+  let btn = document.querySelector('.back-to-top');
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.textContent = '↑';
+    document.body.appendChild(btn);
+  }
+
+  btn.type = 'button';
+  if (!btn.hasAttribute('aria-label')) {
+    btn.setAttribute(
+      'aria-label',
+      document.documentElement.lang.toLowerCase().startsWith('en') ? 'Back to top' : '回到顶部'
+    );
+  }
 
   const toggle = () => {
     btn.classList.toggle('is-visible', window.scrollY > 400);
@@ -96,6 +109,7 @@
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+  toggle();
 })();
 
 // ===== Page Scroll Progress =====
