@@ -186,11 +186,22 @@
   const iconMoon = toggle.querySelector('.icon-moon');
 
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let transitionTimer = 0;
   let explicitTheme = false;
   try { explicitTheme = ['light', 'dark'].includes(localStorage.getItem('theme')); } catch (_) {}
   updateIcon();
 
   function applyTheme(theme) {
+    if (!reduceMotion.matches) {
+      clearTimeout(transitionTimer);
+      html.classList.add('theme-transition');
+      // Commit the transition rules before changing the theme variables.
+      void html.offsetWidth;
+      transitionTimer = window.setTimeout(() => {
+        html.classList.remove('theme-transition');
+      }, 420);
+    }
     html.setAttribute('data-theme', theme);
     updateIcon();
     if (typeof window.reloadGiscus === 'function') window.reloadGiscus(theme);

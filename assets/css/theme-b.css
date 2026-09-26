@@ -102,6 +102,15 @@ body { padding-top:76px; }
 
 /* Shared finishing rules for the selected B layout. */
 :root { color-scheme: light; }
+html.theme-transition,
+html.theme-transition body,
+html.theme-transition body *:not(iframe),
+html.theme-transition body *::before,
+html.theme-transition body *::after {
+  transition-property:color, background-color, border-color, box-shadow, fill, stroke !important;
+  transition-duration:.36s !important;
+  transition-timing-function:cubic-bezier(.22, 1, .36, 1) !important;
+}
 :root[data-theme="dark"] {
   color-scheme: dark;
   --paper:#171c22; --wash:#20272f; --ink:#e0e6eb; --text:#b7c2cc;
@@ -192,5 +201,12 @@ body { padding-top:76px; }
 }
 
 @media (prefers-reduced-motion:reduce) {
+  html.theme-transition,
+  html.theme-transition body,
+  html.theme-transition body *:not(iframe),
+  html.theme-transition body *::before,
+  html.theme-transition body *::after {
+    transition-duration:0s !important;
+  }
   .page-scroll-progress { will-change:auto; }
 }
