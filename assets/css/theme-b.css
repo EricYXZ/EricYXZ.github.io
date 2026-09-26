@@ -170,9 +170,10 @@ html.theme-transition body *::after {
 .cv-contact-line { flex-wrap:wrap; }
 .projects-page .entry {
   display:block;
+  --media-width:50%;
   min-height:240px;
   margin:0 0 22px;
-  padding:24px calc(50% + 12px) 24px 24px;
+  padding:24px calc(min(var(--media-width), 50%) + 12px) 24px 24px;
   border:1px solid var(--line);
   border-radius:3px;
   background:var(--paper);
@@ -202,7 +203,9 @@ html.theme-transition body *::after {
 .projects-page .organization,
 .projects-page .entry > ul { font-size:14px; }
 .projects-page .date {
-  align-self:start;
+  position:absolute;
+  top:24px;
+  right:calc(min(var(--media-width), 50%) + 12px);
   white-space:nowrap;
 }
 .projects-page .entry > ul {
@@ -214,7 +217,7 @@ html.theme-transition body *::after {
   top:0;
   right:0;
   bottom:0;
-  width:50%;
+  width:min(var(--media-width), 50%);
   height:auto;
   overflow:hidden;
   border:0;
@@ -232,8 +235,8 @@ html.theme-transition body *::after {
   top:0;
   bottom:0;
   left:0;
-  width:10%;
-  background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(255,255,255,.52) 42%,rgba(255,255,255,0));
+  width:12%;
+  background:linear-gradient(90deg,#fff 0,rgba(255,255,255,.92) 30%,rgba(255,255,255,.46) 68%,rgba(255,255,255,0) 100%);
   pointer-events:none;
 }
 .project-entry-media--image img {
@@ -241,6 +244,8 @@ html.theme-transition body *::after {
   width:100%;
   height:100%;
   object-fit:contain;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 100%);
 }
 .project-entry-media--placeholder {
   border-style:dashed;
@@ -267,6 +272,9 @@ html.theme-transition body *::after {
     min-height:0;
     padding:20px;
   }
+  .projects-page .date {
+    position:static;
+  }
   .project-entry-media {
     position:relative;
     inset:auto;
@@ -284,6 +292,10 @@ html.theme-transition body *::after {
   .project-entry-media--image,
   .project-entry-media--placeholder { width:100%; }
   .project-entry-media--image::before { display:none; }
+  .project-entry-media--image img {
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
 }
 @media (max-width:720px) {
   body { padding-top:62px; }
