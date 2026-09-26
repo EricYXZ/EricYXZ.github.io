@@ -98,6 +98,37 @@
   });
 })();
 
+// ===== Page Scroll Progress =====
+(function () {
+  const navigation = document.querySelector('.nav-wrap');
+  if (!navigation) return;
+
+  const progress = document.createElement('span');
+  progress.className = 'page-scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  navigation.appendChild(progress);
+
+  let frameId = 0;
+  const update = () => {
+    frameId = 0;
+    const root = document.documentElement;
+    const scrollable = Math.max(0, root.scrollHeight - root.clientHeight);
+    const ratio = scrollable ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+    progress.style.transform = `scaleX(${ratio})`;
+  };
+
+  const scheduleUpdate = () => {
+    if (!frameId) frameId = requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate, { passive: true });
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(scheduleUpdate).observe(document.body);
+  }
+  update();
+})();
+
 // ===== Giscus 留言系统 =====
 (function () {
   const container = document.getElementById('giscus-container');

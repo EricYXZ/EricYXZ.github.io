@@ -119,6 +119,20 @@ body { padding-top:76px; }
 :root body { background:var(--paper); color:var(--text); }
 :root .cv-hero { background:var(--wash); border:1px solid var(--line); }
 :root .nav-wrap { background:var(--paper); width:100%; }
+.page-scroll-progress {
+  position:absolute;
+  right:0;
+  bottom:-1px;
+  left:0;
+  z-index:2;
+  height:2px;
+  background:var(--blue);
+  opacity:.9;
+  pointer-events:none;
+  transform:scaleX(0);
+  transform-origin:left center;
+  will-change:transform;
+}
 :root .lead, :root .entry p, :root .entry li, :root .card p,
 :root .page-intro, :root .feature p { color:var(--text); }
 :root .date, :root .empty-note, :root .organization { color:var(--muted); }
@@ -175,4 +189,8 @@ body { padding-top:76px; }
   .cv-avatar { width:100px; height:100px; }
   .cv-hero-copy { min-width:0; }
   .cv-contact-line { row-gap:10px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .page-scroll-progress { will-change:auto; }
 }
