@@ -227,10 +227,10 @@ html.theme-transition body *::after {
   border-radius:2px;
   background:var(--wash);
 }
-.project-entry-media--microring {
+.project-entry-media--image {
   background:#fff;
 }
-.project-entry-media--microring img {
+.project-entry-media--image img {
   display:block;
   width:100%;
   height:100%;
@@ -276,7 +276,7 @@ html.theme-transition body *::after {
   .projects-page .entry > ul li {
     white-space:normal;
   }
-  .project-entry-media--microring,
+  .project-entry-media--image,
   .project-entry-media--placeholder { width:100%; }
 }
 @media (max-width:720px) {
