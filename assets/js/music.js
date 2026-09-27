@@ -11,10 +11,10 @@
     error:'音频加载失败', seek:'播放进度', mute:'静音', unmute:'取消静音'
   };
   const tracks = [
-    {id:'waltz-in-a-minor', zh:'A小调圆舞曲', en:'Waltz in A minor'},
-    {id:'nocturne-c-sharp-minor', zh:'升C小调夜曲', en:'Nocturne in C♯ minor'},
-    {id:'clair-de-lune', zh:'月光', en:'Clair de lune'},
-    {id:'the-swan', zh:'天鹅', en:'The Swan'}
+    {id:'waltz-in-a-minor', zh:'A小调圆舞曲', en:'Waltz in A minor', zhComposer:'肖邦', enComposer:'Chopin'},
+    {id:'nocturne-c-sharp-minor', zh:'升C小调夜曲', en:'Nocturne in C♯ minor', zhComposer:'肖邦', enComposer:'Chopin'},
+    {id:'clair-de-lune', zh:'月光', en:'Clair de lune', zhComposer:'德彪西', enComposer:'Debussy'},
+    {id:'the-swan', zh:'天鹅', en:'The Swan', zhComposer:'圣-桑', enComposer:'Saint-Saëns'}
   ];
   let saved;
   try { saved = JSON.parse(sessionStorage.getItem('wafer-music') || 'null'); } catch (_) {}
@@ -57,7 +57,7 @@
       <div class="music-picker" title="${en ? 'Scroll to browse · click to play' : '滚动浏览 · 点击切歌'}">
         <div class="music-viewport" role="group" aria-label="${en ? 'Choose a track' : '选择曲目'}">
           <div class="music-track-list">
-            ${tracks.map((track, i) => `<button type="button" class="music-track" data-track="${i}" aria-pressed="${i === active}" tabindex="${i === active ? 0 : -1}">${en ? track.en : track.zh}</button>`).join('')}
+            ${tracks.map((track, i) => `<button type="button" class="music-track" data-track="${i}" aria-pressed="${i === active}" tabindex="${i === active ? 0 : -1}"><span>${en ? track.en : track.zh}</span><span class="music-composer"> · ${en ? track.enComposer : track.zhComposer}</span></button>`).join('')}
           </div>
         </div>
         <span class="music-picker-hint" aria-hidden="true">⌃<br>⌄</span>
