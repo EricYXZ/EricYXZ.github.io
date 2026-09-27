@@ -1,7 +1,7 @@
 /* A silicon wafer, with its die grid and orientation notch. */
 .music-player {
   position:fixed; left:24px; bottom:22px; z-index:990;
-  display:flex; align-items:center; gap:8px; width:302px; height:114px;
+  display:flex; align-items:center; gap:18px; width:318px; height:114px;
   padding:10px 16px 10px 8px; border:1px solid var(--line);
   border-radius:18px; background:var(--paper); color:var(--ink);
   box-shadow:0 8px 32px #00000012; box-sizing:border-box; overflow:visible;
@@ -9,7 +9,7 @@
 }
 .music-player.music-browsing { height:150px; }
 .music-stage { position:relative; z-index:8; flex:0 0 92px; height:92px; overflow:visible; }
-.music-staff { position:absolute; z-index:1; left:-12%; top:0; width:124%; height:100%; pointer-events:none; color:var(--blue); opacity:.22; }
+.music-staff { position:absolute; z-index:1; left:-5%; top:0; width:110%; height:100%; pointer-events:none; color:var(--blue); opacity:.22; }
 .music-staff path { fill:none; stroke:currentColor; stroke-width:.7; }
 .music-wafer-button {
   position:absolute; inset:12px; padding:0; border:0; border-radius:50%;
@@ -118,7 +118,7 @@ body:has(.music-player) .site-footer { padding-bottom:150px; }
 @keyframes wafer-turn { to { transform:rotate(360deg); } }
 @keyframes music-ripple { from { opacity:.35; transform:scale(1); } to { opacity:0; transform:scale(12); } }
 @media(max-width:600px) {
-  .music-player { left:12px; bottom:12px; width:254px; height:92px; padding:6px 10px 6px 4px; gap:4px; }
+  .music-player { left:12px; bottom:12px; width:274px; height:92px; padding:6px 10px 6px 4px; gap:14px; }
   .music-player.music-browsing { height:132px; }
   .music-stage { flex-basis:78px; height:78px; }
   .music-wafer-button { inset:9px; }
