@@ -24,6 +24,38 @@
 }
 .music-wafer::after { content:""; position:absolute; top:-3px; left:calc(50% - 4px); width:8px; height:8px; border-radius:50%; background:var(--paper); }
 .music-playing .music-wafer { animation-play-state:running; }
+.music-tonearm {
+  position:absolute; inset:0; width:100%; height:100%; z-index:3;
+  overflow:visible; pointer-events:none;
+}
+.music-arm-rest { fill:var(--wash); stroke:var(--line); stroke-width:1; }
+.music-arm-base { fill:var(--wash); stroke:var(--muted); stroke-width:1; }
+.music-arm-pivot { fill:#aab8c6; stroke:#445b70; stroke-width:1; }
+.music-arm-pin { fill:#e7eef4; }
+.music-arm-swing {
+  transform-box:view-box; transform-origin:80px 14px; transform:rotate(0deg);
+  filter:drop-shadow(2px 3px 1.5px #0004);
+  transition:transform .85s cubic-bezier(.4,0,.2,1) .18s, filter .25s ease;
+}
+.music-arm-counterweight { fill:none; stroke:#61768a; stroke-width:7; stroke-linecap:round; }
+.music-arm-shaft { fill:none; stroke:#8fa2b4; stroke-width:4; stroke-linecap:round; }
+.music-arm-highlight { fill:none; stroke:#edf3f8; stroke-width:1.2; stroke-linecap:round; }
+.music-cartridge {
+  transform-box:fill-box; transform-origin:center;
+  transform:translateY(-3px) rotate(-8deg);
+  transition:transform .22s ease-out;
+}
+.music-head { fill:#36546d; stroke:#aec2d3; stroke-width:.8; }
+.music-head-highlight { stroke:#d9e5ef; stroke-width:1; stroke-linecap:round; }
+.music-stylus { fill:none; stroke:#d4ad73; stroke-width:1.4; stroke-linecap:round; }
+.music-playing .music-arm-swing {
+  transform:rotate(30deg); filter:drop-shadow(.5px 1px .6px #0005);
+  transition:transform .9s cubic-bezier(.4,0,.2,1), filter .3s ease .65s;
+}
+.music-playing .music-cartridge {
+  transform:translateY(0) rotate(0deg);
+  transition:transform .3s ease-in-out .65s;
+}
 .music-play-icon { position:relative; display:grid; place-items:center; width:25px; height:25px; margin:auto; border-radius:50%; background:#172b4099; backdrop-filter:blur(3px); }
 .music-play-icon svg { width:12px; height:12px; fill:currentColor; }
 .music-pause-shape, .music-playing .music-play-shape { display:none; }
@@ -54,4 +86,5 @@ body:has(.music-player) .site-footer { padding-bottom:150px; }
 @media(prefers-reduced-motion:reduce) {
   .music-wafer { animation:none; }
   .music-ripple { display:none; }
+  .music-player .music-arm-swing, .music-player .music-cartridge { transition:none; }
 }

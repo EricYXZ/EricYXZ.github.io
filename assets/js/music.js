@@ -22,6 +22,22 @@
         <span class="music-wafer" aria-hidden="true"></span>
         <span class="music-play-icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path class="music-play-shape" d="M4 2 14 8 4 14Z"/><path class="music-pause-shape" d="M3 2h3v12H3zM10 2h3v12h-3z"/></svg></span>
       </button>
+      <svg class="music-tonearm" viewBox="0 0 92 92" aria-hidden="true" focusable="false">
+        <rect class="music-arm-rest" x="75" y="48" width="12" height="7" rx="3"/>
+        <circle class="music-arm-base" cx="80" cy="14" r="8"/>
+        <g class="music-arm-swing">
+          <path class="music-arm-counterweight" d="M80 7V3"/>
+          <path class="music-arm-shaft" d="M80 14V40Q80 45 78 49L76 53"/>
+          <path class="music-arm-highlight" d="M79 18V39Q79 44 77 48"/>
+          <g class="music-cartridge">
+            <path class="music-stylus" d="M73 61 71 65"/>
+            <rect class="music-head" x="72" y="51" width="8" height="12" rx="2" transform="rotate(20 76 57)"/>
+            <path class="music-head-highlight" d="M76 54 74 59"/>
+          </g>
+        </g>
+        <circle class="music-arm-pivot" cx="80" cy="14" r="4"/>
+        <circle class="music-arm-pin" cx="80" cy="14" r="1.3"/>
+      </svg>
     </div>
     <div class="music-copy">
       <div class="music-caption" aria-live="polite">${labels.ready}</div>
