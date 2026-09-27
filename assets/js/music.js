@@ -14,14 +14,19 @@
     {id:'waltz-in-a-minor', zh:'A小调圆舞曲', en:'Waltz in A minor', zhComposer:'肖邦', enComposer:'Chopin'},
     {id:'nocturne-c-sharp-minor', zh:'升C小调夜曲', en:'Nocturne in C♯ minor', zhComposer:'肖邦', enComposer:'Chopin'},
     {id:'clair-de-lune', zh:'月光', en:'Clair de lune', zhComposer:'德彪西', enComposer:'Debussy'},
-    {id:'the-swan', zh:'天鹅', en:'The Swan', zhComposer:'圣-桑', enComposer:'Saint-Saëns'}
+    {id:'the-swan', zh:'天鹅', en:'The Swan', zhComposer:'圣-桑', enComposer:'Saint-Saëns'},
+    {id:'humoresque', zh:'幽默曲', en:'Humoresque', zhComposer:'德沃夏克', enComposer:'Dvořák'},
+    {id:'traumerei', zh:'梦幻曲', en:'Träumerei', zhComposer:'舒曼', enComposer:'Schumann'},
+    {id:'air-on-the-g-string', zh:'G弦上的咏叹调', en:'Air on the G String', zhComposer:'巴赫', enComposer:'J. S. Bach'},
+    {id:'romance-dvorak', zh:'浪漫曲', en:'Romance', zhComposer:'德沃夏克', enComposer:'Dvořák'},
+    {id:'estrellita', zh:'Estrellita', en:'Estrellita', zhComposer:'庞塞', enComposer:'Manuel Ponce'}
   ];
   let saved;
   try { saved = JSON.parse(sessionStorage.getItem('wafer-music') || 'null'); } catch (_) {}
   let active = Math.max(0, tracks.findIndex(track => track.id === saved?.track));
   const audio = new Audio(`/assets/audio/${tracks[active].id}.mp3`);
   audio.preload = 'none';
-  audio.loop = true;
+  audio.loop = false;
   audio.volume = 0;
   const player = document.createElement('section');
   player.className = 'music-player';
@@ -90,9 +95,12 @@
   };
   // Schedule fades on the audio clock, including when the tab is in the background.
   let context, gain, previousTime = 0;
+  let fadeToken = 0, fadeTimer = 0, fadeFrame = 0;
+  let fading = false, pausePending = false;
   const smooth = x => { x = Math.max(0, Math.min(1,x)); return x*x*(3-2*x); };
   const volumeAt = t => .45 * smooth(t/3) * (Number.isFinite(audio.duration) ? smooth((audio.duration-t)/4) : 1);
   function envelope() {
+    if (fading) return;
     if (!gain) { audio.volume = volumeAt(audio.currentTime); return; }
     const now = context.currentTime, start = audio.currentTime, duration = audio.duration;
     gain.gain.cancelScheduledValues(now);
@@ -113,6 +121,46 @@
     }
     if (context?.state === 'suspended') context.resume().catch(()=>{});
   }
+  function cancelFade() {
+    clearTimeout(fadeTimer);
+    cancelAnimationFrame(fadeFrame);
+    fadeTimer=0; fadeFrame=0;
+    if (!gain) return;
+    const now=context.currentTime, current=gain.gain.value;
+    if (typeof gain.gain.cancelAndHoldAtTime === 'function') gain.gain.cancelAndHoldAtTime(now);
+    else {
+      gain.gain.cancelScheduledValues(now);
+      gain.gain.setValueAtTime(current,now);
+    }
+  }
+  function setOutput(value) {
+    value=Math.max(0,Math.min(.45,value));
+    cancelFade();
+    if (gain) gain.gain.setValueAtTime(value,context.currentTime);
+    else audio.volume=value;
+  }
+  function fadeOutput(target,duration,token,complete) {
+    target=Math.max(0,Math.min(.45,target));
+    cancelFade();
+    if (gain) {
+      const now=context.currentTime;
+      gain.gain.linearRampToValueAtTime(target,now+duration/1000);
+    } else {
+      const start=performance.now(), from=audio.volume;
+      const step=now=>{
+        if(token!==fadeToken)return;
+        const progress=Math.min(1,(now-start)/duration);
+        audio.volume=from+(target-from)*smooth(progress);
+        if(progress<1)fadeFrame=requestAnimationFrame(step);
+      };
+      fadeFrame=requestAnimationFrame(step);
+    }
+    fadeTimer=setTimeout(()=>{
+      if(token!==fadeToken)return;
+      setOutput(target);
+      complete();
+    },duration+20);
+  }
   const formatTime = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2,'0')}`;
   audio.addEventListener('loadedmetadata', () => {
     seek.max = audio.duration;
@@ -126,17 +174,41 @@
     time.textContent = formatTime(audio.currentTime);
     seek.setAttribute('aria-valuetext', `${formatTime(audio.currentTime)} / ${formatTime(audio.duration || 0)}`);
     if (audio.currentTime < previousTime-.5) envelope();
-    if (!gain) audio.volume=volumeAt(audio.currentTime);
+    if (!gain && !fading) audio.volume=volumeAt(audio.currentTime);
     previousTime=audio.currentTime;
   });
   audio.addEventListener('playing', envelope);
   audio.addEventListener('seeked', envelope);
   audio.addEventListener('ratechange', envelope);
   const play = async () => {
-    try { prepareAudio(); await audio.play(); }
-    catch (error) { if(error.name !== 'AbortError') caption.textContent = error.name === 'NotAllowedError' ? labels.resume : labels.error; }
+    const token=++fadeToken, wasPaused=audio.paused;
+    pausePending=false; fading=true;
+    try {
+      prepareAudio();
+      if(wasPaused)setOutput(0);
+      await audio.play();
+      if(token!==fadeToken)return;
+      fadeOutput(volumeAt(audio.currentTime+.9),900,token,()=>{
+        if(token!==fadeToken)return;
+        fading=false; envelope();
+      });
+    }
+    catch (error) {
+      if(token!==fadeToken)return;
+      fading=false; envelope();
+      if(error.name !== 'AbortError') caption.textContent = error.name === 'NotAllowedError' ? labels.resume : labels.error;
+    }
   };
-  toggle.addEventListener('click', () => audio.paused ? play() : audio.pause());
+  const pause = () => {
+    if(audio.paused)return;
+    const token=++fadeToken;
+    pausePending=true; fading=true;
+    fadeOutput(0,700,token,()=>{
+      if(token!==fadeToken)return;
+      pausePending=false; fading=false; audio.pause();
+    });
+  };
+  toggle.addEventListener('click', () => audio.paused || pausePending ? play() : pause());
   seek.addEventListener('input', () => { audio.currentTime = Number(seek.value); });
   mute.addEventListener('click', () => { audio.muted = !audio.muted; syncMute(); save(); });
   audio.addEventListener('play', () => {
@@ -155,6 +227,7 @@
     save();
   });
   audio.addEventListener('error', () => { caption.textContent = labels.error; });
+  audio.addEventListener('ended', () => selectTrack((active+1)%tracks.length));
   window.addEventListener('pagehide', save);
 
   // A spring-driven title wheel. Browsing never changes the playing track.
@@ -201,6 +274,7 @@
   },{passive:false});
   async function selectTrack(index) {
     if(index!==active) {
+      ++fadeToken; cancelFade(); fading=false; pausePending=false;
       audio.pause(); active=index; saved=null; previousTime=0;
       audio.src=`/assets/audio/${tracks[active].id}.mp3`;
       seek.disabled=true; seek.value=0; time.textContent='0:00';
