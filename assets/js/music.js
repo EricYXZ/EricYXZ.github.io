@@ -67,7 +67,7 @@
         <span class="music-time">0:00</span>
         <button type="button" class="music-mute" aria-label="${labels.mute}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 6 8H3v8h3l5 4Z"/><path class="music-sound-wave" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg></button>
       </div>
-      <a class="music-credits" href="/assets/audio/credits.html" target="_blank" rel="noopener">${en ? 'Repeat one · recordings' : '单曲循环 · 录音来源'}</a>
+      <a class="music-credits" href="/assets/audio/credits.html" target="_blank" rel="noopener">${en ? 'Recording credits' : '录音来源'}</a>
     </div>`;
   document.body.appendChild(player);
   audio.hidden = true;
@@ -162,7 +162,7 @@
   const viewport=player.querySelector('.music-viewport');
   const trackList=player.querySelector('.music-track-list');
   const trackButtons=[...player.querySelectorAll('.music-track')];
-  const row=32;
+  const row=24;
   let position=active*row, target=position, velocity=0, pickerFrame=0, pickerTime=0;
   let returnTimer=0, returning=false, drag=null, suppressClickUntil=0;
   const renderPicker=()=>trackList.style.transform=`translateY(${-position}px)`;
@@ -174,7 +174,9 @@
     if(reduced.matches || (Math.abs(target-position)<.08 && Math.abs(velocity)<.08)) {
       position=target; velocity=0; pickerTime=0;
       if(returning) {
-        picker.classList.remove('music-picker-open'); returning=false;
+        picker.classList.remove('music-picker-open');
+        player.classList.remove('music-browsing');
+        returning=false;
         if(viewport.contains(document.activeElement)) trackButtons[active].focus({preventScroll:true});
       }
     } else pickerFrame=requestAnimationFrame(animatePicker);
@@ -185,8 +187,10 @@
     clearTimeout(returnTimer); returning=true; target=active*row; movePicker();
   }
   function browse() {
-    returning=false; picker.classList.add('music-picker-open');
-    clearTimeout(returnTimer); returnTimer=setTimeout(returnToTrack,2800);
+    returning=false;
+    picker.classList.add('music-picker-open');
+    player.classList.add('music-browsing');
+    clearTimeout(returnTimer); returnTimer=setTimeout(returnToTrack,2500);
   }
   picker.addEventListener('pointerenter',browse);
   viewport.addEventListener('wheel',event=>{
