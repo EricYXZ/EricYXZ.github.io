@@ -1,74 +1,96 @@
-# 叶煊喆 · 个人主页
+# Eric Ye | Personal Academic Homepage
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-上线-blue?logo=github)](https://ericyxz.github.io)
-[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![Website](https://img.shields.io/badge/website-ericyxz.github.io-41627d)](https://ericyxz.github.io/)
+[![GitHub Pages](https://img.shields.io/badge/deployment-GitHub%20Pages-2f6f4e)](https://github.com/EricYXZ/EricYXZ.github.io/actions)
+[![Bilingual](https://img.shields.io/badge/language-中文%20%7C%20English-6f7780)](https://ericyxz.github.io/en/)
 
-🔗 **在线访问**：[ericyxz.github.io](https://ericyxz.github.io)
+叶煊喆（Eric Ye）的双语个人学术主页，记录教育经历、荣誉奖项、工程与科研项目、论文发表和生活相册。网站使用原生 HTML、CSS 和 JavaScript 开发，通过 GitHub Pages 直接部署。
 
----
+在线访问：[https://ericyxz.github.io/](https://ericyxz.github.io/)
 
-## 📖 简介
+## 页面内容
 
-华中科技大学集成电路学院本科生叶煊喆的个人学术主页，包含简历、工程与科研项目、技术笔记、论文发表和生活相册等内容。提供中英文版本，基于纯静态 HTML/CSS/JS 构建，部署于 GitHub Pages。
+| 页面 | 中文版 | English | 主要内容 |
+| --- | --- | --- | --- |
+| 首页 | [`/`](https://ericyxz.github.io/) | [`/en/`](https://ericyxz.github.io/en/) | 个人简介、论文状态、荣誉奖项、内容导航、生活剪影与访客留言 |
+| 简历 | [`/cv/`](https://ericyxz.github.io/cv/) | [`/en/cv/`](https://ericyxz.github.io/en/cv/) | 教育经历、专业技能、荣誉奖项和主要项目 |
+| 项目 | [`/projects/`](https://ericyxz.github.io/projects/) | [`/en/projects/`](https://ericyxz.github.io/en/projects/) | 工程项目、科研项目和技术笔记 |
+| 论文 | [`/publications/`](https://ericyxz.github.io/publications/) | [`/en/publications/`](https://ericyxz.github.io/en/publications/) | 论文与后续学术成果 |
+| 相册 | [`/gallery/`](https://ericyxz.github.io/gallery/) | [`/en/gallery/`](https://ericyxz.github.io/en/gallery/) | 校园、旅行、项目与日常记录 |
 
-## ✨ 特性
+## 设计与交互
 
-- 🎨 **现代简约设计** — 自研 CSS，支持亮色 / 深色双主题切换
-- 📱 **响应式布局** — 适配桌面端、平板与手机
-- ⚡ **粒子背景动画** — Hero 区域 Canvas 粒子网络效果
-- ⌨️ **打字机效果** — 首页标语逐字切换动画
-- 💬 **访客留言** — 基于 Giscus + GitHub Discussions 的评论系统
-- 🔍 **SEO 优化** — Open Graph 标签、meta 描述、语义化 HTML
-- 🎯 **滚动渐入动画** — Intersection Observer 驱动的元素渐显
+- 中文与英文页面保持相同的信息结构和视觉语言。
+- 响应式布局覆盖桌面端与移动端，导航栏固定在页面顶部并显示阅读进度。
+- 支持浅色、深色主题以及平滑的主题切换动画。
+- 荣誉奖项使用带阻尼和边界回弹的纵向滚动；生活剪影支持横向循环浏览。
+- 项目页采用等尺寸三列卡片，展示项目图片、时间和简要说明。
+- 每页提供回到顶部按钮，首页通过 Giscus 接入 GitHub Discussions 留言。
+- 晶圆唱片播放器包含唱臂、五线谱、音符和涟漪动画，支持曲目浏览、进度控制、静音、播放与暂停渐变，以及九首曲目的列表循环。
+- 尊重 `prefers-reduced-motion`，在用户要求减少动态效果时关闭或简化部分动画。
 
-## 🛠️ 技术栈
+## 技术实现
 
-| 类别 | 技术 |
-|------|------|
-| 前端 | HTML5 · CSS3 · Vanilla JS |
-| 字体 | Inter · Noto Sans SC（Google Fonts） |
-| 图标 | 内联 SVG |
-| 评论 | Giscus（GitHub Discussions） |
-| 统计 | 不蒜子 |
+| 类别 | 实现 |
+| --- | --- |
+| 页面 | HTML5 |
+| 样式 | CSS3、自定义属性、响应式媒体查询 |
+| 交互 | Vanilla JavaScript、Web Audio API、Intersection Observer |
+| 留言 | Giscus + GitHub Discussions |
 | 部署 | GitHub Pages |
 
-## 📁 项目结构
+项目没有框架、包管理器或构建步骤，所有页面和资源都可以由静态文件服务器直接提供。
 
-```
-├── index.html          # 首页
-├── cv/                 # 个人简历
-├── projects/           # 工程与科研项目、技术笔记
-├── publications/       # 论文发表
-├── gallery/            # 生活相册
-├── en/                 # 英文版对应页面
+## 目录结构
+
+```text
+.
+├── index.html                 # 中文首页
+├── cv/                        # 中文简历
+├── projects/                  # 中文项目页
+├── publications/              # 中文论文页
+├── gallery/                   # 中文相册页
+├── en/                        # 英文版对应页面
 ├── assets/
-│   ├── css/style.css   # 全局样式
-│   ├── js/
-│   │   ├── main.js     # 公共交互脚本
-│   │   └── details.js  # 折叠面板脚本
-│   ├── img/            # 图片资源
-│   ├── photos/         # 相册照片
-│   └── certificates/   # 获奖证书
+│   ├── audio/                 # 播放器音频与录音来源说明
+│   ├── certificates/          # 荣誉奖项证书
+│   ├── css/                   # 全局、主题、播放器与 Giscus 样式
+│   ├── docs/                  # 简历 PDF
+│   ├── img/                   # 头像、站点图标与项目配图
+│   ├── js/                    # 公共交互、相册、折叠面板与播放器逻辑
+│   ├── photos/                # 相册资源
+│   └── project-images/        # 其他项目图片
+├── .nojekyll                  # 让 GitHub Pages 直接发布静态文件
 └── README.md
 ```
 
-## 🚀 本地运行
+## 本地预览
 
 ```bash
-# 克隆仓库
 git clone https://github.com/EricYXZ/EricYXZ.github.io.git
-
-# 进入目录
 cd EricYXZ.github.io
-
-# 用任意静态服务器启动，例如：
-npx serve .
-# 或
 python -m http.server 8080
 ```
 
-浏览器打开 `http://localhost:8080` 即可预览。
+浏览器访问 [http://localhost:8080/](http://localhost:8080/)。页面使用根路径资源引用，因此建议通过静态服务器预览，不要直接双击打开 HTML 文件。
 
-## 📄 许可
+## 内容维护
 
-MIT License © 2026 叶煊喆
+- 个人资料与首页内容：`index.html`、`en/index.html`
+- 简历：`cv/index.html`、`en/cv/index.html`
+- 项目：`projects/index.html`、`en/projects/index.html`
+- 论文：`publications/index.html`、`en/publications/index.html`
+- 相册：`gallery/index.html`、`en/gallery/index.html`
+- 全局交互与主题：`assets/js/main.js`
+- 音乐播放器：`assets/js/music.js`、`assets/css/music.css`
+- 录音来源与授权：[`assets/audio/credits.html`](https://ericyxz.github.io/assets/audio/credits.html)
+
+更新页面内容时，请同时维护中文和英文版本。当前下载简历使用占位 PDF，论文页面也保留为空状态，待正式内容发布后替换。
+
+## 部署
+
+推送到 `main` 分支后，GitHub Pages 会自动构建并发布网站。仓库中的 `.nojekyll` 文件确保静态资源按原目录结构提供。
+
+## 资源说明
+
+个人照片、证书、项目材料和自有音频仅用于本人的主页展示。第三方录音的来源及许可信息列在[录音来源页面](https://ericyxz.github.io/assets/audio/credits.html)中。
