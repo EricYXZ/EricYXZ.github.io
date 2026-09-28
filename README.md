@@ -26,6 +26,7 @@
 - 荣誉奖项使用带阻尼和边界回弹的纵向滚动；生活剪影支持横向循环浏览。
 - 项目页采用等尺寸三列卡片，展示项目图片、时间和简要说明。
 - 每页提供回到顶部按钮，首页通过 Giscus 接入 GitHub Discussions 留言。
+- 站内页面使用局部导航更新内容，在切换页面和浏览器前进、后退时保持音乐连续播放。
 - 晶圆唱片播放器包含唱臂、五线谱、音符和涟漪动画，支持曲目浏览、进度控制、静音、播放与暂停渐变，以及九首曲目的列表循环。
 - 尊重 `prefers-reduced-motion`，在用户要求减少动态效果时关闭或简化部分动画。
 
@@ -82,6 +83,7 @@ python -m http.server 8080
 - 论文：`publications/index.html`、`en/publications/index.html`
 - 相册：`gallery/index.html`、`en/gallery/index.html`
 - 全局交互与主题：`assets/js/main.js`
+- 无刷新站内导航：`assets/js/navigation.js`
 - 音乐播放器：`assets/js/music.js`、`assets/css/music.css`
 - 录音来源与授权：[`assets/audio/credits.html`](https://ericyxz.github.io/assets/audio/credits.html)
 

@@ -1,7 +1,7 @@
 (() => {
   if (document.querySelector('.music-player')) return;
-  const en = document.documentElement.lang.startsWith('en');
-  const labels = en ? {
+  let en = document.documentElement.lang.startsWith('en');
+  const getLabels = () => en ? {
     title:'Waltz in A minor', player:'Music player', play:'Play music', pause:'Pause music',
     ready:'CLICK TO PLAY', playing:'NOW PLAYING', paused:'PAUSED', resume:'CLICK TO RESUME',
     error:'Unable to load audio', seek:'Playback position', mute:'Mute', unmute:'Unmute'
@@ -10,6 +10,7 @@
     ready:'点击晶圆播放', playing:'正在播放', paused:'已暂停', resume:'点击继续播放',
     error:'音频加载失败', seek:'播放进度', mute:'静音', unmute:'取消静音'
   };
+  let labels = getLabels();
   const tracks = [
     {id:'waltz-in-a-minor', zh:'A小调圆舞曲', en:'Waltz in A minor', zhComposer:'肖邦', enComposer:'Chopin'},
     {id:'nocturne-c-sharp-minor', zh:'升C小调夜曲', en:'Nocturne in C♯ minor', zhComposer:'肖邦', enComposer:'Chopin'},
@@ -235,6 +236,22 @@
   const viewport=player.querySelector('.music-viewport');
   const trackList=player.querySelector('.music-track-list');
   const trackButtons=[...player.querySelectorAll('.music-track')];
+  function syncLanguage() {
+    en=document.documentElement.lang.startsWith('en');
+    labels=getLabels();
+    player.setAttribute('aria-label',labels.player);
+    toggle.setAttribute('aria-label',audio.paused?labels.play:labels.pause);
+    seek.setAttribute('aria-label',labels.seek);
+    picker.title=en?'Scroll to browse · click to play':'滚动浏览 · 点击切歌';
+    viewport.setAttribute('aria-label',en?'Choose a track':'选择曲目');
+    trackButtons.forEach((button,i)=>{
+      const track=tracks[i];
+      button.innerHTML=`<span>${en?track.en:track.zh}</span><span class="music-composer"> · ${en?track.enComposer:track.zhComposer}</span>`;
+    });
+    caption.textContent=audio.paused?(audio.currentTime?labels.paused:labels.ready):labels.playing;
+    syncMute();
+  }
+  document.addEventListener('site:navigation',syncLanguage);
   const row=24;
   let position=active*row, target=position, velocity=0, pickerFrame=0, pickerTime=0;
   let returnTimer=0, returning=false, drag=null, suppressClickUntil=0;
