@@ -19,7 +19,7 @@
     {id:'traumerei', zh:'梦幻曲', en:'Träumerei', zhComposer:'舒曼', enComposer:'Schumann'},
     {id:'air-on-the-g-string', zh:'G弦上的咏叹调', en:'Air on the G String', zhComposer:'巴赫', enComposer:'J. S. Bach'},
     {id:'romance-dvorak', zh:'浪漫曲', en:'Romance', zhComposer:'德沃夏克', enComposer:'Dvořák'},
-    {id:'estrellita', zh:'Estrellita', en:'Estrellita', zhComposer:'庞塞', enComposer:'Manuel Ponce'}
+    {id:'estrellita', zh:'我的小星星', en:'Estrellita', zhComposer:'庞塞', enComposer:'Manuel Ponce'}
   ];
   let saved;
   try { saved = JSON.parse(sessionStorage.getItem('wafer-music') || 'null'); } catch (_) {}
