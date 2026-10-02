@@ -94,7 +94,8 @@ body { padding-top:76px; }
 .academic-home-content .home-section { border:0; padding-bottom:0; }
 .home-honors-list .honor-result { font-variant-numeric:tabular-nums; }
 .card { border-top:0; }
-.academic-home-content .home-card-grid { gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+/* No bottom padding here: the column rules must meet the grid's bottom border. */
+.academic-home-content .home-card-grid { gap:0; padding-bottom:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .academic-home-content .card { padding:20px 16px; border-right:1px solid var(--line); }
 .academic-home-content .card:first-child { padding-left:0; }
 .academic-home-content .card:last-child { border-right:0; }
