@@ -1735,29 +1735,6 @@ ul {
   font-size: 20px;
 }
 
-/* Photo hover overlay */
-.photo-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.photo-card:hover .photo-overlay {
-  opacity: 1;
-}
-
-.photo-overlay-icon {
-  font-size: 36px;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-}
-
 /* ===== Academic Homepage visual direction =====
    Adapted for the existing static site using the restrained layout language of AcadHomepage. */
 :root {
