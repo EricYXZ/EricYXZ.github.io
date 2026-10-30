@@ -87,7 +87,7 @@ python -m http.server 8080
 - 音乐播放器：`assets/js/music.js`、`assets/css/music.css`
 - 录音来源与授权：[`assets/audio/credits.html`](https://ericyxz.github.io/assets/audio/credits.html)
 
-更新页面内容时，请同时维护中文和英文版本。当前下载简历使用占位 PDF，论文页面也保留为空状态，待正式内容发布后替换。
+更新页面内容时，请同时维护中文和英文版本。当前下载简历仍使用占位 PDF；论文页面已收录最新的 Agentic Chip Design survey 预印本。
 
 ## 部署
 
