@@ -2614,6 +2614,105 @@ body {
   content: "· ";
 }
 
+/* Homepage publication list mirrors the compact, scrollable honors list. */
+.academic-home-content .home-publications-list {
+  max-height: 255px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: 40px;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.34) 15%,
+    rgba(0, 0, 0, 0.72) 29%,
+    #000 42%,
+    #000 58%,
+    rgba(0, 0, 0, 0.72) 71%,
+    rgba(0, 0, 0, 0.34) 85%,
+    transparent 100%
+  );
+  scrollbar-width: none;
+}
+
+.academic-home-content .home-publications-list::-webkit-scrollbar {
+  display: none;
+}
+
+.home-publication-item {
+  transform: translateY(var(--honors-overscroll, 0px));
+  will-change: transform;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-publication-item:last-child {
+  border-bottom: 0;
+}
+
+.home-publication-item .entry-header {
+  align-items: baseline;
+  gap: 8px;
+}
+
+.home-publication-item .entry-title {
+  min-width: 0;
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.home-publication-item .entry-title a,
+.home-publication-item .entry-title a:hover {
+  display: inline-block;
+  color: var(--ink);
+  font-weight: inherit;
+  text-decoration: none;
+  text-decoration-color: transparent;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.home-publication-item .entry-title a:hover {
+  transform: translateX(2px);
+}
+
+.home-publication-item .date {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.home-publication-item .organization {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.home-publication-item > p:last-child {
+  margin: 4px 0 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Keep homepage links understated like the honors links. */
+.academic-home-content .text-link,
+.academic-home-content .entry-title a {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.academic-home-content .text-link:hover,
+.academic-home-content .entry-title a:hover {
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
 .academic-home-content .section {
   margin-top: 46px;
 }
