@@ -295,6 +295,25 @@ html.theme-transition body *::after {
   transform:translateX(2px);
 }
 
+/* CV project and publication titles use the same quiet link treatment. */
+.cv-page main .entry-title a {
+  display:inline-block;
+  color:var(--blue-dark);
+  text-decoration:none;
+  text-decoration-color:transparent;
+  transition:transform .18s ease, color .18s ease;
+}
+.cv-page main .entry-title a:hover {
+  color:var(--blue-dark);
+  text-decoration:none;
+  transform:translateX(2px);
+}
+.cv-publications .organization {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
 .english-home .profile-role { font-size:14px; line-height:1.65; }
 .english-home .profile-affiliation, .english-home .affiliation-line {
   font-size:12px; line-height:1.75; white-space:normal;
