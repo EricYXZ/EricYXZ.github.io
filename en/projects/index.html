@@ -24,7 +24,7 @@
     })();
   </script>
   <link rel="stylesheet" href="/assets/css/style.css?v=20260926-layout">
-  <link rel="stylesheet" href="/assets/css/theme-b.css?v=20260926-b15">
+  <link rel="stylesheet" href="/assets/css/theme-b.css?v=20261123-projects">
   <link rel="stylesheet" href="/assets/css/music.css?v=20260927-7">
 </head>
 
@@ -73,6 +73,41 @@
 
       <section class="section project-section project-section--engineering">
         <h2>Engineering Projects</h2>
+
+        <div class="entry entry--fit-content">
+          <div class="entry-header">
+            <p class="entry-title"><a href="https://github.com/PilgrimClownester/48964_rtlagent" target="_blank" rel="noopener noreferrer">ART: ASTF-Based RTL Transformation Agent</a></p>
+            <span class="date">Nov. 2026</span>
+          </div>
+          <p class="organization">LLM / Verilog / Python / Vivado</p>
+          <ul>
+            <li>Expresses natural-language circuit specifications as abstract signal transition functions (ASTFs).</li>
+            <li>Audits and repairs ASTFs, generates Verilog, then checks it with simulation and Vivado synthesis.</li>
+            <li>Across three benchmarks and six models, the rate of passing both simulation and synthesis rose from 80.1% to 89.5%.</li>
+            <li>Repository: <a class="text-link" href="https://github.com/PilgrimClownester/48964_rtlagent" target="_blank" rel="noopener noreferrer">GitHub (access required)</a></li>
+          </ul>
+          <div class="project-entry-media project-entry-media--image project-entry-media--diagram">
+            <img src="/assets/img/projects/art-rtl-agent-workflow.png" alt="ART workflow from specification and ASTF auditing to RTL generation and validation" width="747" height="352" loading="lazy">
+          </div>
+        </div>
+
+        <div class="entry entry--fit-content">
+          <div class="entry-header">
+            <p class="entry-title"><a href="https://github.com/hhaxi/keyword_transfomer_accelerator" target="_blank" rel="noopener noreferrer">KWT-1 Keyword Spotting Accelerator on E203 SoC</a></p>
+            <span class="date">Nov. 2026</span>
+          </div>
+          <p class="organization">Verilog / RISC-V / SoC / Transformer / FPGA</p>
+          <ul>
+            <li>Integrated a fixed-point FFN1 accelerator with DMA, ping-pong buffers, and an 8×8 PE array.</li>
+            <li>Extended the design to a 12-layer Transformer encoder with attention, FFN, residual adds, and layer normalization.</li>
+            <li>Verified WAV-to-classification on Z100 FPGA. All 120 predictions matched the fixed-point software.</li>
+            <li>Repository: <a class="text-link" href="https://github.com/hhaxi/keyword_transfomer_accelerator" target="_blank" rel="noopener noreferrer">GitHub (access required)</a></li>
+          </ul>
+          <div class="project-entry-media project-entry-media--image project-entry-media--diagram">
+            <img src="/assets/img/projects/kwt1-e203-ffn1-architecture.png" alt="E203 SoC and FFN1 accelerator with DMA, ping-pong buffers, an 8×8 PE array, and an ICB bus" width="1800" height="1714" loading="lazy">
+          </div>
+        </div>
+
         <div class="entry">
           <div class="entry-header">
             <p class="entry-title"><a href="https://github.com/EricYXZ/la32r_soc" target="_blank" rel="noopener noreferrer">Loongson LA32R SoC — National Second Prize</a></p>

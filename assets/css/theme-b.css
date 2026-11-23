@@ -193,6 +193,10 @@ html.theme-transition body *::after {
   overflow:hidden;
   transition:box-shadow .28s cubic-bezier(.22, 1, .36, 1);
 }
+.projects-page .entry--fit-content {
+  height:auto;
+  min-height:640px;
+}
 .projects-page .entry:last-child { padding-bottom:22px; }
 .projects-page .entry::before { display:none; }
 .projects-page .entry:hover {
@@ -266,6 +270,9 @@ html.theme-transition body *::after {
   height:30%;
   background:linear-gradient(180deg,transparent 0,var(--paper) 100%);
   pointer-events:none;
+}
+.project-entry-media--diagram::after {
+  content:none;
 }
 .project-entry-media--image img {
   display:block;

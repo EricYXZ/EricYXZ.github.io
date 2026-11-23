@@ -22,7 +22,7 @@
     })();
   </script>
   <link rel="stylesheet" href="/assets/css/style.css?v=20260926-layout">
-  <link rel="stylesheet" href="/assets/css/theme-b.css?v=20260926-b15">
+  <link rel="stylesheet" href="/assets/css/theme-b.css?v=20261123-projects">
   <link rel="stylesheet" href="/assets/css/music.css?v=20260927-7">
 </head>
 
@@ -81,6 +81,40 @@
 
       <section class="section project-section project-section--engineering">
         <h2>工程项目</h2>
+
+        <div class="entry entry--fit-content">
+          <div class="entry-header">
+            <p class="entry-title"><a href="https://github.com/PilgrimClownester/48964_rtlagent" target="_blank" rel="noopener noreferrer">ART：基于 ASTF 的 RTL 生成智能体</a></p>
+            <span class="date">2026.11</span>
+          </div>
+          <p class="organization">LLM / Verilog / Python / Vivado</p>
+          <ul>
+            <li>以抽象信号转移函数（ASTF）表达自然语言电路规格，记录时钟、复位、位宽及状态更新规则。</li>
+            <li>审计并修复 ASTF，通过确定性转换或模型生成 Verilog，再用仿真和 Vivado 综合验证。</li>
+            <li>在三个题集、六个模型的配对评测中，仿真及综合均通过的比例从 80.1% 提升至 89.5%。</li>
+            <li>项目仓库：<a class="text-link" href="https://github.com/PilgrimClownester/48964_rtlagent" target="_blank" rel="noopener noreferrer">GitHub（需访问权限）</a></li>
+          </ul>
+          <div class="project-entry-media project-entry-media--image project-entry-media--diagram">
+            <img src="/assets/img/projects/art-rtl-agent-workflow.png" alt="ART 三阶段流程图，展示规格表达、ASTF 审计修复和 RTL 生成验证" width="747" height="352" loading="lazy">
+          </div>
+        </div>
+
+        <div class="entry entry--fit-content">
+          <div class="entry-header">
+            <p class="entry-title"><a href="https://github.com/hhaxi/keyword_transfomer_accelerator" target="_blank" rel="noopener noreferrer">基于 E203 SoC 的 KWT-1 关键词识别加速器</a></p>
+            <span class="date">2026.11</span>
+          </div>
+          <p class="organization">Verilog / RISC-V / SoC / Transformer / FPGA</p>
+          <ul>
+            <li>在 E203 蜂鸟 SoC 中集成定点 FFN1 加速器，使用 DMA、乒乓缓存和 8×8 PE 阵列。</li>
+            <li>扩展至完整 12 层 Transformer 编码器，支持单头注意力、FFN、残差相加及层归一化。</li>
+            <li>在 Z100 FPGA 上验证从 WAV 输入到分类输出，120 条样本的预测均与定点软件一致。</li>
+            <li>项目仓库：<a class="text-link" href="https://github.com/hhaxi/keyword_transfomer_accelerator" target="_blank" rel="noopener noreferrer">GitHub（需访问权限）</a></li>
+          </ul>
+          <div class="project-entry-media project-entry-media--image project-entry-media--diagram">
+            <img src="/assets/img/projects/kwt1-e203-ffn1-architecture.png" alt="E203 SoC 与 FFN1 加速器架构，展示 DMA、乒乓缓存、8×8 PE 阵列及 ICB 总线" width="1800" height="1714" loading="lazy">
+          </div>
+        </div>
 
         <div class="entry">
           <div class="entry-header">
