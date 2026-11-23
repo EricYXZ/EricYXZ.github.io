@@ -193,9 +193,8 @@ html.theme-transition body *::after {
   overflow:hidden;
   transition:box-shadow .28s cubic-bezier(.22, 1, .36, 1);
 }
-.projects-page .entry--fit-content {
-  height:auto;
-  min-height:640px;
+.projects-page .entry > :not(.project-entry-media) {
+  flex-shrink:0;
 }
 .projects-page .entry:last-child { padding-bottom:22px; }
 .projects-page .entry::before { display:none; }
@@ -248,7 +247,8 @@ html.theme-transition body *::after {
 .project-entry-media {
   position:relative;
   order:-1;
-  flex:0 0 auto;
+  flex:0 1 auto;
+  min-height:0;
   width:calc(100% + 44px);
   height:auto;
   margin:0 -22px 14px;
@@ -271,13 +271,11 @@ html.theme-transition body *::after {
   background:linear-gradient(180deg,transparent 0,var(--paper) 100%);
   pointer-events:none;
 }
-.project-entry-media--diagram::after {
-  content:none;
-}
 .project-entry-media--image img {
   display:block;
   width:100%;
-  height:auto;
+  height:100%;
+  object-fit:contain;
 }
 .project-entry-media--placeholder {
   aspect-ratio:4 / 3;
