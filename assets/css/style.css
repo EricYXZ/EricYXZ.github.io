@@ -1008,10 +1008,13 @@ ul {
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 18px;
 }
 
 .photo-card {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   margin: 0;
   overflow: hidden;
@@ -1029,29 +1032,27 @@ ul {
   box-shadow: var(--shadow);
 }
 
-.photo-card--wide {
-  grid-column: span 2;
-}
-
 .photo-card img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
   display: block;
-  object-fit: cover;
-  background: #dbe6f4;
-  transition: transform 0.28s ease, filter 0.28s ease;
+  flex: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: var(--paper);
+  transition: filter 0.28s ease;
 }
 
 .photo-card:hover img {
-  transform: scale(1.025);
   filter: saturate(1.08) contrast(1.04);
 }
 
 .photo-card figcaption {
   display: flex;
-  align-items: baseline;
+  flex: 1;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 6px;
   padding: 14px 16px 16px;
 }
 
@@ -1062,7 +1063,7 @@ ul {
 
 .photo-card span {
   flex: 0 0 auto;
-  color: var(--muted);
+  color: var(--text);
   font-size: 13px;
 }
 
@@ -1103,11 +1104,13 @@ ul {
   }
 
   .photo-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
 
-  .photo-card--wide {
-    grid-column: auto;
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -3037,7 +3040,7 @@ body {
   stroke-width: 1.8;
 }
 
-/* ===== Categorized Masonry Gallery ===== */
+/* ===== Gallery Category Filters ===== */
 .gallery-filters {
   display: flex;
   flex-wrap: wrap;
@@ -3063,41 +3066,6 @@ body {
   color: var(--blue-dark);
   background: rgba(37, 99, 235, 0.08);
   transform: translateY(-1px);
-}
-
-.photo-grid.masonry {
-  display: block;
-  column-count: 3;
-  column-gap: 18px;
-}
-
-.photo-grid.masonry .photo-card {
-  width: 100%;
-  display: inline-block;
-  margin: 0 0 18px;
-  break-inside: avoid;
-  vertical-align: top;
-}
-
-.photo-grid.masonry .photo-card--wide {
-  grid-column: auto;
-}
-
-.photo-grid.masonry .photo-card img {
-  aspect-ratio: auto;
-  height: auto;
-}
-
-@media (max-width: 920px) {
-  .photo-grid.masonry {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 600px) {
-  .photo-grid.masonry {
-    column-count: 1;
-  }
 }
 
 .snapshot-marquee {
