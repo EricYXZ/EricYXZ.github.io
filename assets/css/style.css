@@ -3088,10 +3088,6 @@ body {
   height: auto;
 }
 
-.photo-card.is-filtered-out {
-  display: none;
-}
-
 @media (max-width: 920px) {
   .photo-grid.masonry {
     column-count: 2;

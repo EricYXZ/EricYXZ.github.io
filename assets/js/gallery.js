@@ -18,7 +18,7 @@
 
       cards.forEach((card) => {
         const visible = category === "all" || card.dataset.galleryCategory === category;
-        card.classList.toggle("is-filtered-out", !visible);
+        card.style.display = visible ? "" : "none";
         card.setAttribute("aria-hidden", String(!visible));
       });
     });
